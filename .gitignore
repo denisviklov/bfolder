@@ -1,0 +1,7 @@
+*.pyc
+bfolder/data/*
+.project
+.pydevproject
+.settings/*
+bfolder/.settings/*
+bfolder/bfolder/static/img/pack/*
