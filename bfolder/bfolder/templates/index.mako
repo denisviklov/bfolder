@@ -6,6 +6,8 @@
         <script src="static/js/jquery-1.7.2.min.js"></script>
         <script src="static/js/bootstrap.js"></script>
         <script src="static/js/common.js"></script>
+        <script src="static/js/jquery-ui-1.8.18.custom.min.js"></script>
+        <link rel="stylesheet" href="static/css/smoothness/jquery-ui-1.8.18.custom.css">
     </head>
     <body style="background-color: #F8F8F8;">
         <div class="container">
@@ -24,14 +26,16 @@
   				<% curpage_attr={"class": "btn primary small disabled"} %>  
   				<% dotdot_attr={"class": "btn small disabled"} %> 
             	<div class="span12">
-            		<form class="well form-search">
+            		<div class="ui-widget">
+            		<form class="well form-search" method="post">
             			<center>
-	            			<input type="text" class="input-large search-query" name="q" style="width: 600px; height: 40px;">
+	            			<input type="text" class="input-large search-query" name="q" style="width: 600px; height: 40px; font-size: 22px;">
 	            			<button class="btn" type="submit" style="height: 40px; width: 60px;">
 	            				<i class="icon-search"></i>
 	            			</button>
             			</center>
             		</form>
+            		</div>
             		${pager.pager(format="$link_previous ~2~ $link_next",
             										symbol_previous="<<",
             										symbol_next=">>",
