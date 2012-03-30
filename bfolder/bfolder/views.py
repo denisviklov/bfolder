@@ -1,6 +1,7 @@
 from model import Image, CursorWrapper
 from webhelpers import paginate
 from pyramid.httpexceptions import HTTPNotFound
+from pyramid.response import Response
 
 def index(request):
     if request.method == 'GET':
@@ -38,4 +39,19 @@ def search(request):
                 p = request.params.get('page',1)
                 page = paginate.Page(CursorWrapper(cursor), items_per_page=20, page=p, url=paginate.PageURL_WebOb(request))
                 return {'pager':page}
+            
+def download_img(request):
+    file_name = request.POST.get('file_name')
+    f = open('/home/denis/Aptana Studio 3 Workspace/bfolder/bfolder/bfolder/static/img/pack/'+file_name+'.jpg')    
+    return Response(body=f.read(), content_type='application/octet-stream')
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
         

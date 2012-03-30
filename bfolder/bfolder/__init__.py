@@ -10,6 +10,8 @@ def main(global_config, **settings):
                     renderer='bfolder:templates/index.mako')
     config.add_route('full_image', '/full_image/{img_id}')
     config.add_view('bfolder.views.full_img', route_name='full_image', renderer='bfolder:templates/full_img.mako')
+    config.add_route('download_img', '/download_image')
+    config.add_view('bfolder.views.download_img', route_name='download_img')
     config.add_route('search_autocomplete', '/search_autocomplete')
     config.add_view('bfolder.views.search_autocomplete', route_name='search_autocomplete', renderer='json')
     config.add_static_view('static', 'bfolder:static', cache_max_age=3600)
