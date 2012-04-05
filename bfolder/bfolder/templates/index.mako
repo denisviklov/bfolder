@@ -27,14 +27,14 @@
   				<% dotdot_attr={"class": "btn small disabled"} %> 
             	<div class="span12">
             		<div class="ui-widget">
-            		<form class="well form-search" method="post">
-            			<center>
-	            			<input type="text" class="input-large search-query" name="q" style="width: 600px; height: 40px; font-size: 22px;">
-	            			<button class="btn" type="submit" style="height: 40px; width: 60px;">
-	            				<i class="icon-search"></i>
-	            			</button>
-            			</center>
-            		</form>
+	            		<form class="well form-search" method="post">
+	            			<center>
+		            			<input type="text" class="input-large search-query" name="q" style="width: 600px; height: 40px; font-size: 22px;">
+		            			<button class="btn" type="submit" style="height: 40px; width: 60px;">
+		            				<i class="icon-search"></i>
+		            			</button>
+	            			</center>
+	            		</form>
             		</div>
             		${pager.pager(format="$link_previous ~2~ $link_next",
             										symbol_previous="<<",
