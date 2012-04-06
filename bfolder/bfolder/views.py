@@ -6,6 +6,8 @@ from pyramid.httpexceptions import HTTPNotFound, HTTPFound
 from pyramid.response import Response
 import time
 
+from os.path import abspath
+
 def index(request):
     if request.method == 'GET':
         cursor = Image.objects.all()
@@ -46,7 +48,8 @@ def search(request):
             
 def download_img(request):
     file_name = request.POST.get('file_name')
-    f = open('/home/denis/Aptana Studio 3 Workspace/bfolder/bfolder/bfolder/static/img/pack/'+file_name+'.jpg')    
+    #f = open('/home/denis/Aptana Studio 3 Workspace/bfolder/bfolder/bfolder/static/img/pack/'+file_name+'.jpg')
+    f = open(abspath('.')+'/bfolder/static/img/pack/'+file_name+'.jpg')    
     return Response(body=f.read(), content_type='application/octet-stream')
 
 def raiting(request):
