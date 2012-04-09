@@ -8,6 +8,7 @@ class Image(Document):
     title = StringField()
     category = StringField()
     raiting = IntField()
+    ctime = IntField()
     
 class Comment(Document):
     body = StringField()

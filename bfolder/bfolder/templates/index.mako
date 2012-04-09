@@ -15,8 +15,8 @@
         	<div class="row">
         		
         		<!-- JQUERY UPLOAD START HERE -->
-        		<div class="span12">
-				   <form id="fileupload" action="server/php/" method="POST" enctype="multipart/form-data">
+        		<div class="span12" style="margin-top: 20px;">
+				   <form id="fileupload" action="/upload" method="POST" enctype="multipart/form-data">
 				        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 				        <div class="row fileupload-buttonbar">
 				            <div class="span7">
@@ -54,7 +54,9 @@
 				        <div class="fileupload-loading"></div>
 				        <br>
 				        <!-- The table listing the files available for upload/download -->
-				        <table class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
+				        <table class="table table-striped">
+				        	<tbody class="files" id="files_list" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
+				        </table>
 				    </form>
         		</div>
         		<!-- JQUERY UPLOAD ENDS HERE-->
@@ -106,12 +108,12 @@
 	       <!-- JavaScripts for file upload-->
         <script>
         var fileUploadErrors = {
-            maxFileSize: 'File is too big',
-            minFileSize: 'File is too small',
-            acceptFileTypes: 'Filetype not allowed',
-            maxNumberOfFiles: 'Max number of files exceeded',
-            uploadedBytes: 'Uploaded bytes exceed file size',
-            emptyResult: 'Empty file upload result'
+            maxFileSize: 'Файл очень большой',
+            minFileSize: 'Файл очень маленький',
+            acceptFileTypes: 'Загрузка только картинок',
+            maxNumberOfFiles: 'Слишком большое количество файлов',
+            uploadedBytes: 'Слишком большой размер загрузки',
+            emptyResult: 'Хуйня какая-то'
         };
         </script>
         <!-- The template to display files available for upload -->
@@ -122,6 +124,10 @@
                 <td class="name">{%=file.name%}</td>
                 <td class="size">{%=o.formatFileSize(file.size)%}</td>
                 //target field can be declarated here
+                <td>
+                	<label>название*:</label>
+                	<input type="text" name="title" style="height: 30px;" id="pic_title">
+                </td>
 
                 {% if (file.error) { %}
                     <td class="error" colspan="2"><span class="label label-important">Error</span> {%=fileUploadErrors[file.error] || file.error%}</td>
@@ -174,7 +180,7 @@
             </tr>
         {% } %}
         </script>
-        <script src="static/js/jquery-1.7.1.min.js"></script>
+        <!--<script src="static/js/jquery-1.7.1.min.js"></script>-->
         <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
         <script src="static/js/vendor/jquery.ui.widget.js"></script>
         <!-- The Templates plugin is included to render the upload/download listings -->
@@ -198,26 +204,27 @@
         <script src="static/js/main.js"></script>
         <script src="static/js/common.js"></script>
         <script src="static/js/jquery-ui-1.8.18.custom.min.js"></script>
-        <script src="static/js/bootstrap-modal.js"></script>
         <script>
             $('#fileupload').fileupload({
-                    formData: {our_target: 'test'}
+                    formData: {example: 'test'}
                 });
+
+            
             $('#fileupload').bind('fileuploadsubmit', function (e, data) {
+            	
                     // The example input, doesn't have to be part of the upload form:
-                    var our_tg = $('#target :selected').val();
-                    var t_f = $('#type_of :selected').val();
-                    data.formData = {our_target: our_tg, type_of: t_f};
-                    if (!data.formData.our_target) {
-                      input.focus();
+                    var title = $('#pic_title').val();
+                    data.formData = {example: title};
+                    if (!data.formData.example) {
+                      $('#pic_title').focus();
                       return false;
                     }
                 });
+            
             //function what clear fields after loading
             $('#fileupload').bind('fileuploaddone', function(e, data){
                 $('#files_list').html('');
-                reload_table();
-            })
+                })
 
     </body>
 </html>

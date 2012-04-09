@@ -1,10 +1,10 @@
 from model import Image, Comment, CursorWrapper
-from common import remove_tags
+from common import remove_tags, name_file, img_con
 
 from webhelpers import paginate
 from pyramid.httpexceptions import HTTPNotFound, HTTPFound
 from pyramid.response import Response
-import time
+import time, json
 
 from os.path import abspath
 
@@ -66,6 +66,24 @@ def add_comment(request):
     c = Comment(body=comment, time=int(time.time()), to_image_name = file_name)
     c.save()
     return HTTPFound('/full_image/%s' % file_name)
+
+def upload(request):
+    try:
+        f = request.POST.get(u'files[]').file
+        filename = request.POST.get(u'files[]').filename
+        title = request.POST.get('title')
+    except AttributeError:
+        print 'Attribute Error'
+    n_f = name_file()
+    img_con(f, n_f)
+    try:
+        img = Image(name=n_f, title=title, category='', raiting=0, ctime=int(time.time()))
+        img.save()
+    except Exception as e:
+        print e
+    resp = []
+    resp.append({'name':filename})
+    return Response(json.dumps(resp))
     
             
             

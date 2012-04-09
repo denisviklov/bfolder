@@ -37,14 +37,20 @@
             		<a class='btn' href="#" id="voit_dec">
             			<i class="icon-arrow-down"></i>
             		</a>
-            		<span style="font-size: 18px;" id="rait">60</span>
+            		<span style="font-size: 18px;" id="rait">
+            			%if img.raiting:
+            				${img.raiting}
+            			%else:
+            				0
+            			%endif
+            		</span>
             		<a class="btn" href="#" id="voit_inc">
             			<i class="icon-arrow-up"></i>
             		</a>
             		<center>
 	            		<form action="/add_comment" method="post" id="comment">
 	            			<input type="hidden" name="file_name" value="${img.name}">
-	            			<textarea name="comment" cols="100" rows="4" required form="comment"></textarea>
+	            			<textarea name="comment" cols="10" rows="4" required form="comment" style="width: 210px;"></textarea>
 	            			<input type="submit" class="btn" value="Отправить"/>
 	            		</form>
 	            		<div>
