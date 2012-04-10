@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <title>${img.title}</title>
-        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/bootstrap.css">
         <script src="/static/js/jquery-1.7.2.min.js"></script>
         <script src="/static/js/bootstrap.js"></script>
     </head>
@@ -43,6 +43,7 @@
             		<a class="btn" href="#" id="voit_inc">
             			<i class="icon-arrow-up"></i>
             		</a>
+            		<p style="margin-top: 20px;"><a href="/" style="font-size: 18px;"><<Назад</a></p>
             	</div>
             	<div class="span10" style="margin-top: 10px;">
             		<center>
