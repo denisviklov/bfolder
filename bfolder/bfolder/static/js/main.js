@@ -35,4 +35,9 @@ $(function () {
             resizeMaxWidth: 1920,
             resizeMaxHeight: 1200}
             )
+            
+	    //function which clear fields after loading
+	    $('#fileupload').bind('fileuploaddone', function(e, data){
+	        $('#files_list').html('');
+	        })
 });

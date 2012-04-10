@@ -25,11 +25,7 @@
     <body style="background-color: #F8F8F8;">
         <div class="container">
             <div class="row">
-            	<center><h2>${img.title}</h2></center>
-            	<div class="span12">
-            		<center>
-						<img src="/static/img/pack/${img.name}_full.jpg" alt="${img.title}" title="${img.title}">          		
-            		</center>
+            	<div class="span2" style="margin-top: 20px;">
             		<form action="/download_image" method="post">
             			<input type="hidden" name="file_name" value="${img.name}">
             			<input type="submit" class="btn btn-primary btn-large" value="Скачать">
@@ -47,17 +43,24 @@
             		<a class="btn" href="#" id="voit_inc">
             			<i class="icon-arrow-up"></i>
             		</a>
+            	</div>
+            	<div class="span10" style="margin-top: 10px;">
             		<center>
-	            		<form action="/add_comment" method="post" id="comment">
+            			<h2>${img.title}</h2>
+						<img src="/static/img/pack/${img.name}_full.jpg" alt="${img.title}" title="${img.title}">
+	            		<form action="/add_comment" method="post" id="comment" style="margin-top: 10px;">
 	            			<input type="hidden" name="file_name" value="${img.name}">
-	            			<textarea name="comment" cols="10" rows="4" required form="comment" style="width: 210px;"></textarea>
+	            			<textarea name="comment" cols="10" rows="4" required form="comment"></textarea><br/>
 	            			<input type="submit" class="btn" value="Отправить"/>
 	            		</form>
 	            		<div>
 	            			%for c in comments:
-	            				${c.body}
+	            				<div class="well" style="margin-bottom: 10px;">
+	            					<p>${h.time_pretify(c.time)}</p>
+	            					<p>${c.body}</p>
+	            				</div>
 	            			%endfor
-	            		</div>
+	            		</div>       		
             		</center>
             	</div>
         	</div>

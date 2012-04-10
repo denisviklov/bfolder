@@ -2,6 +2,7 @@ from model import Image, Comment, CursorWrapper
 from common import remove_tags, name_file, img_con
 
 from webhelpers import paginate
+from webhelpers.containers import unique
 from pyramid.httpexceptions import HTTPNotFound, HTTPFound
 from pyramid.response import Response
 import time, json
@@ -34,8 +35,9 @@ def search_autocomplete(request):
     q = request.GET.get('term')
     if q:
         search_results = Image.objects(title__icontains=q)
-        result = [{'id':res.title, 'value':res.title} for res in search_results]
-        return result
+        result = unique([res.title for res in search_results])
+        uresult = [{'id':res, 'value':res} for res in result]
+        return uresult
     
 def search(request):
     q = request.POST.get('q')
@@ -71,7 +73,7 @@ def upload(request):
     try:
         f = request.POST.get(u'files[]').file
         filename = request.POST.get(u'files[]').filename
-        title = request.POST.get('title')
+        title = remove_tags(request.POST.get('title'))
     except AttributeError:
         print 'Attribute Error'
     n_f = name_file()

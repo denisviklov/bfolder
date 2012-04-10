@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>2ch image hosting</title>
+        <title>Pixchan.org - хостинг мемов</title>
         <link rel="stylesheet" href="static/css/bootstrap.css">
         <script src="static/js/jquery-1.7.2.min.js"></script>
         <script src="static/js/bootstrap.js"></script>
@@ -62,11 +62,14 @@
         		<!-- JQUERY UPLOAD ENDS HERE-->
         		
             	<div class="span6" style="vertical-align: baseline;">
-            			<div style="margin-top: 40px;">
+            			<div style="margin-top: 40px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 14px;">
             			<b>pixChan</b> — это сервис хранения картинок для имиджборд.<br>
             			Здесь можно хранить свои олдфажные паки "колобков", рожь и прочих butthurt'ов.
             			Все пикчи участвуют в рейтинге и поиске.<br>
-            			Надеюсь тебе понравится Аноним.
+            			Для того чтобы загрузить картинку необходимо указать ее название, пожалуйста выбирайте
+            			осмысленные названия, чтобы можно было удобно пользоваться поиском.<br> 
+            			Так же сразу можно загрузить несколько картинок если удерживать Ctrl.<br> 
+            			Надеюсь тебе понравится <b>Аноним</b>.
             			</div>
             	</div>
             	<div class="span6"><img src="static/img/2ch_tian_logo_small_small.jpg"></div>
@@ -211,7 +214,6 @@
 
             
             $('#fileupload').bind('fileuploadsubmit', function (e, data) {
-            	
                     // The example input, doesn't have to be part of the upload form:
                     var title = $('#pic_title').val();
                     data.formData = {example: title};
@@ -220,11 +222,6 @@
                       return false;
                     }
                 });
-            
-            //function what clear fields after loading
-            $('#fileupload').bind('fileuploaddone', function(e, data){
-                $('#files_list').html('');
-                })
 
     </body>
 </html>
