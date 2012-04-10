@@ -1,6 +1,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name='yandex-verification' content='430203cf93d14992' />
         <title>Pixchan.org - хостинг мемов</title>
         <link rel="stylesheet" href="static/css/bootstrap.css">
         <script src="static/js/jquery-1.7.2.min.js"></script>
