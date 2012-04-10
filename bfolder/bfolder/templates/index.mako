@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="static/css/smoothness/jquery-ui-1.8.18.custom.css">
         <link rel="stylesheet" href="static/css/jquery.fileupload-ui.css">
     </head>
+    
     <body style="background-color: #F8F8F8;">
         <div class="container">
         	<div class="row">
@@ -119,6 +120,7 @@
             emptyResult: 'Хуйня какая-то'
         };
         </script>
+        
         <!-- The template to display files available for upload -->
         <script id="template-upload" type="text/html">
         {% for (var i=0, files=o.files, l=files.length, file=files[0]; i<l; file=files[++i]) { %}
@@ -155,6 +157,7 @@
             </tr>
         {% } %}
         </script>
+        
         <!-- The template to display files available for download -->
         <script id="template-download" type="text/html">
         {% for (var i=0, files=o.files, l=files.length, file=files[0]; i<l; file=files[++i]) { %}
@@ -183,6 +186,7 @@
             </tr>
         {% } %}
         </script>
+        
         <!--<script src="static/js/jquery-1.7.1.min.js"></script>-->
         <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
         <script src="static/js/vendor/jquery.ui.widget.js"></script>
@@ -207,7 +211,7 @@
         <script src="static/js/main.js"></script>
         <script src="static/js/common.js"></script>
         <script src="static/js/jquery-ui-1.8.18.custom.min.js"></script>
-        <script>
+ 		<script>
             $('#fileupload').fileupload({
                     formData: {example: 'test'}
                 });
@@ -222,7 +226,27 @@
                       return false;
                     }
                 });
+                
+                (function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter13819918 = new Ya.Metrika({id:13819918, enableAll: true});
+        } catch(e) {}
+    });
+    
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
 
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+<noscript><div><img src="//mc.yandex.ru/watch/13819918" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		
     </body>
 </html>
 
