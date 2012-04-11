@@ -39,4 +39,17 @@ $(function () {
 	    $('#fileupload').bind('fileuploaddone', function(e, data){
 	        $('#files_list').html('');
 	        })
+	   ////////////
+	       $('#fileupload').fileupload({
+                    formData: {example: 'test'}
+                });
+
+            
+            $('#fileupload').bind('fileuploadsubmit', function (e, data) {
+                    // The example input, doesn't have to be part of the upload form:
+                    var inputs = data.context.find(':input');
+                    //data.formData = {example: title};
+ 					data.formData = inputs.serializeArray();
+                });
+                
 });

@@ -131,7 +131,7 @@
                 //target field can be declarated here
                 <td>
                 	<label>название*:</label>
-                	<input type="text" name="title" style="height: 30px;" id="pic_title">
+                	<td class="title"><label>Title: <input name="title[]" required></label></td>
                 </td>
 
                 {% if (file.error) { %}
@@ -212,22 +212,8 @@
         <script src="static/js/common.js"></script>
         <script src="static/js/jquery-ui-1.8.18.custom.min.js"></script>
  		<script>
-            $('#fileupload').fileupload({
-                    formData: {example: 'test'}
-                });
 
-            
-            $('#fileupload').bind('fileuploadsubmit', function (e, data) {
-                    // The example input, doesn't have to be part of the upload form:
-                    var title = $('#pic_title').val();
-                    data.formData = {example: title};
-                    if (!data.formData.example) {
-                      $('#pic_title').focus();
-                      return false;
-                    }
-                });
-                
-                (function (d, w, c) {
+    (function (d, w, c) {
     (w[c] = w[c] || []).push(function() {
         try {
             w.yaCounter13819918 = new Ya.Metrika({id:13819918, enableAll: true});

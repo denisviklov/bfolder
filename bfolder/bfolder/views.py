@@ -73,7 +73,7 @@ def upload(request):
     try:
         f = request.POST.get(u'files[]').file
         filename = request.POST.get(u'files[]').filename
-        title = remove_tags(request.POST.get('title'))
+        title = remove_tags(request.POST.get('title[]'))
         if title:
             n_f = name_file()
             img_con(f, n_f)
