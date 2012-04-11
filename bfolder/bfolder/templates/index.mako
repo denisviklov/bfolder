@@ -131,7 +131,7 @@
                 //target field can be declarated here
                 <td>
                 	<label>название*:</label>
-                	<td class="title"><label>Title: <input name="title[]" required></label></td>
+                	<td class="title"><label>Название*: <input name="title[]" required></label></td>
                 </td>
 
                 {% if (file.error) { %}
