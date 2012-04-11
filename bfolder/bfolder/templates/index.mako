@@ -254,8 +254,9 @@
     <tr>
     %for img in row:
 		<td align="center" style="vertical-align: bottom;">
+			<a href="/full_image/${img.name}">
 			<img src="static/img/pack/${img.name}.jpg" title="${img.title}" alt="${img.title}">
-			<center><a href="/full_image/${img.name}">${img.title}</a></center>
+			<center>${img.title}</center></a>
 		</td>
     %endfor
     </tr>

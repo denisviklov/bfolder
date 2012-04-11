@@ -74,18 +74,25 @@ def upload(request):
         f = request.POST.get(u'files[]').file
         filename = request.POST.get(u'files[]').filename
         title = remove_tags(request.POST.get('title'))
+        if title:
+            n_f = name_file()
+            img_con(f, n_f)
+            try:
+                img = Image(name=n_f, title=title, category='', raiting=0, ctime=int(time.time()))
+                img.save()
+            except Exception as e:
+                print e
+            resp = []
+            resp.append({'name':filename})
+            return Response(json.dumps(resp))
+        else:
+            resp = []
+            resp.append({'name':filename})
+            return Response(json.dumps(resp))
     except AttributeError:
         print 'Attribute Error'
-    n_f = name_file()
-    img_con(f, n_f)
-    try:
-        img = Image(name=n_f, title=title, category='', raiting=0, ctime=int(time.time()))
-        img.save()
-    except Exception as e:
-        print e
-    resp = []
-    resp.append({'name':filename})
-    return Response(json.dumps(resp))
+    
+
     
             
             
