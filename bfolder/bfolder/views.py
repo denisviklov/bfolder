@@ -11,7 +11,8 @@ from os.path import abspath
 
 def index(request):
     if request.method == 'GET':
-        cursor = Image.objects.all()
+        cursor = Image.objects.all().order_by('-ctime')
+        print dir(cursor)
         #p = request.params.get('page',1)
         #page = paginate.Page(CursorWrapper(cursor), items_per_page=20, page=p, url=paginate.PageURL_WebOb(request))
         #return {'pager':page}
@@ -50,8 +51,8 @@ def search(request):
             
 def download_img(request):
     file_name = request.POST.get('file_name')
-    #f = open('/home/denis/Aptana Studio 3 Workspace/bfolder/bfolder/bfolder/static/img/pack/'+file_name+'.jpg')
-    f = open(abspath('.')+'/bfolder/static/img/pack/'+file_name+'.jpg')    
+    #f = open('/home/denis/Aptana Studio 3 Workspace/bfolder/bfolder/bfolder/static/img/pack/'+file_name+'_full.jpg')
+    f = open(abspath('.')+'/bfolder/static/img/pack/'+file_name+'_full.jpg')    
     return Response(body=f.read(), content_type='application/octet-stream')
 
 def raiting(request):
