@@ -74,11 +74,14 @@ def upload(request):
         f = request.POST.get(u'files[]').file
         filename = request.POST.get(u'files[]').filename
         title = remove_tags(request.POST.get('title[]'))
+        tags = remove_tags(request.POST.get('tags[]'))
+        tags = [tag.strip() for tag in tags.split(',')]
+        print tags
         if title:
             n_f = name_file()
             img_con(f, n_f)
             try:
-                img = Image(name=n_f, title=title, category='', raiting=0, ctime=int(time.time()))
+                img = Image(name=n_f, title=title, category='', raiting=0, ctime=int(time.time()), tags=tags)
                 img.save()
             except Exception as e:
                 print e
@@ -91,6 +94,13 @@ def upload(request):
             return Response(json.dumps(resp))
     except AttributeError:
         print 'Attribute Error'
+        
+def get_by_tag(request):
+    tag = request.matchdict.get('tag')
+    cursor = Image.objects(tags=tag).order_by('-ctime')
+    p = request.params.get('page',1)
+    page = paginate.Page(CursorWrapper(cursor), items_per_page=20, page=p, url=paginate.PageURL_WebOb(request))
+    return {'pager':page}
     
 
     

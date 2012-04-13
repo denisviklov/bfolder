@@ -22,6 +22,8 @@ def main(global_config, **settings):
     config.add_view('bfolder.views.add_comment', route_name='add_comment')
     config.add_route('upload', '/upload')
     config.add_view('bfolder.views.upload', route_name='upload')
+    config.add_route('get_by_tag', '/tag_search/{tag}')
+    config.add_view('bfolder.views.get_by_tag', route_name='get_by_tag', renderer='bfolder:templates/index.mako')
     config.add_static_view('static', 'bfolder:static', cache_max_age=3600)
     config.add_subscriber(add_renderer_globals, BeforeRender)
     return config.make_wsgi_app()

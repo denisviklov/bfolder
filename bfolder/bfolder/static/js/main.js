@@ -48,6 +48,9 @@ $(function () {
             $('#fileupload').bind('fileuploadsubmit', function (e, data) {
                     // The example input, doesn't have to be part of the upload form:
                     var inputs = data.context.find(':input');
+                    if (inputs.filter('[required][value=""]').first().focus().length) {
+													        return false;
+													    }
                     //data.formData = {example: title};
  					data.formData = inputs.serializeArray();
                 });

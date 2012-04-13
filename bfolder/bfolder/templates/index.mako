@@ -3,13 +3,13 @@
         <meta charset="utf-8">
         <meta name='yandex-verification' content='430203cf93d14992' />
         <title>Pixchan.org - хостинг мемов</title>
-        <link rel="stylesheet" href="static/css/bootstrap.css">
-        <script src="static/js/jquery-1.7.2.min.js"></script>
-        <script src="static/js/bootstrap.js"></script>
-        <script src="static/js/common.js"></script>
-        <script src="static/js/jquery-ui-1.8.18.custom.min.js"></script>
-        <link rel="stylesheet" href="static/css/smoothness/jquery-ui-1.8.18.custom.css">
-        <link rel="stylesheet" href="static/css/jquery.fileupload-ui.css">
+        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <script src="/static/js/jquery-1.7.2.min.js"></script>
+        <script src="/static/js/bootstrap.js"></script>
+        <script src="/static/js/common.js"></script>
+        <script src="/static/js/jquery-ui-1.8.18.custom.min.js"></script>
+        <link rel="stylesheet" href="/static/css/smoothness/jquery-ui-1.8.18.custom.css">
+        <link rel="stylesheet" href="/static/css/jquery.fileupload-ui.css">
     </head>
     
     <body style="background-color: #F8F8F8;">
@@ -65,7 +65,7 @@
         		
             	<div class="span6" style="vertical-align: baseline;">
             			<div style="margin-top: 40px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 14px;">
-            			<b>pixChan</b> — это облачный сервис для хранения имиджбордовских изображений.<br>
+            			<a href="/"><b>pixChan</b></a> — это облачный сервис для хранения имиджбордовских изображений.<br>
 						Здесь можно хранить свои паки с Йобой, макросы, и прочее непотребство.<br>
 						Все изображения участвуют в рейтинге и доступны для поиска.<br>
 						Для того, чтобы загрузить картинку, необходимо указать ее название. Пожалуйста выбирайте осмысленные названия, чтобы ваше изображение соответствовало параметрам поиска.
@@ -73,7 +73,7 @@
 						Надеюсь тебе понравится, <b>Анон</b>.
             			</div>
             	</div>
-            	<div class="span6"><img src="static/img/2ch_tian_logo_small_small.jpg"></div>
+            	<div class="span6"><img src="/static/img/2ch_tian_logo_small_small.jpg"></div>
             	<% link_attr={"class": "btn small"} %>  
   				<% curpage_attr={"class": "btn primary small disabled"} %>  
   				<% dotdot_attr={"class": "btn small disabled"} %> 
@@ -88,6 +88,15 @@
 	            			</center>
 	            		</form>
             		</div>
+            		<div class="well">
+            			<% i = 0 %>
+            			%for k,v in h.get_tag_cloud().iteritems():
+            				%if i <= 10 :
+            					<a href="/tag_search/${k}" style="font-size: ${int(40*v)}px;">${k}</a>
+            					<% i+=1 %>
+            				%endif
+            			%endfor
+            		</div>
             		${pager.pager(format="$link_previous ~2~ $link_next",
             										symbol_previous="<<",
             										symbol_next=">>",
@@ -95,7 +104,7 @@
             										curpage_attr=curpage_attr,
             										dotdot_attr=dotdot_attr)}
                 	<center>
-	                	<table>
+	                	<table style="margin-top: 10px;">
 							${makerow(pager.items[:5])}
 							${makerow(pager.items[5:10])}
 							${makerow(pager.items[10:15])}
@@ -130,8 +139,10 @@
                 <td class="size">{%=o.formatFileSize(file.size)%}</td>
                 //target field can be declarated here
                 <td>
-                	<label>название*:</label>
                 	<td class="title"><label>Название*: <input style="height: 25px;" name="title[]" required></label></td>
+                </td>
+                <td>
+                	<td class="title"><label>Теги: <input style="height: 25px;" name="tags[]"></label></td>
                 </td>
 
                 {% if (file.error) { %}
@@ -189,28 +200,28 @@
         
         <!--<script src="static/js/jquery-1.7.1.min.js"></script>-->
         <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-        <script src="static/js/vendor/jquery.ui.widget.js"></script>
+        <script src="/static/js/vendor/jquery.ui.widget.js"></script>
         <!-- The Templates plugin is included to render the upload/download listings -->
-        <script src="static/js/tmpl.min.js"></script>
+        <script src="/static/js/tmpl.min.js"></script>
         <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-        <script src="static/js/load-image.min.js"></script>
+        <script src="/static/js/load-image.min.js"></script>
         <!-- The Canvas to Blob plugin is included for image resizing functionality -->
-        <script src="static/js/canvas-to-blob.min.js"></script>
+        <script src="/static/js/canvas-to-blob.min.js"></script>
         <!-- Bootstrap JS and Bootstrap Image Gallery are not required, but included for the demo -->
-        <script src="static/js/bootstrap.min.js"></script>
-        <script src="static/js/bootstrap-image-gallery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="/static/js/bootstrap-image-gallery.min.js"></script>
         <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-        <script src="static/js/jquery.iframe-transport.js"></script>
+        <script src="/static/js/jquery.iframe-transport.js"></script>
         <!-- The basic File Upload plugin -->
-        <script src="static/js/jquery.fileupload.js"></script>
+        <script src="/static/js/jquery.fileupload.js"></script>
         <!-- The File Upload image processing plugin -->
-        <script src="static/js/jquery.fileupload-ip.js"></script>
+        <script src="/static/js/jquery.fileupload-ip.js"></script>
         <!-- The File Upload user interface plugin -->
-        <script src="static/js/jquery.fileupload-ui.js"></script>
+        <script src="/static/js/jquery.fileupload-ui.js"></script>
         <!-- The main application script -->
-        <script src="static/js/main.js"></script>
-        <script src="static/js/common.js"></script>
-        <script src="static/js/jquery-ui-1.8.18.custom.min.js"></script>
+        <script src="/static/js/main.js"></script>
+        <script src="/static/js/common.js"></script>
+        <script src="/static/js/jquery-ui-1.8.18.custom.min.js"></script>
  		<script>
 
     (function (d, w, c) {
@@ -241,7 +252,7 @@
     %for img in row:
 		<td align="center" style="vertical-align: bottom;">
 			<a href="/full_image/${img.name}">
-			<img src="static/img/pack/${img.name}.jpg" title="${img.title}" alt="${img.title}">
+			<img src="/static/img/pack/${img.name}.jpg" title="${img.title}" alt="${img.title}">
 			<center>${img.title}</center></a>
 		</td>
     %endfor
