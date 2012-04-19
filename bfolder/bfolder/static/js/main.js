@@ -38,6 +38,7 @@ $(function () {
 	    //function what clear fields after loading
 	    $('#fileupload').bind('fileuploaddone', function(e, data){
 	        $('#files_list').html('');
+	        reload_table();
 	        })
 	   ////////////
 	       $('#fileupload').fileupload({

@@ -88,7 +88,7 @@
 	            			</center>
 	            		</form>
             		</div>
-            		<div class="well">
+            		<div class="well" id="tag_cloud">
             			<% i = 0 %>
             			%for k,v in h.get_tag_cloud().iteritems():
             				%if i <= 10 :
@@ -97,6 +97,7 @@
             				%endif
             			%endfor
             		</div>
+            		<div id="content_table">
             		${pager.pager(format="$link_previous ~2~ $link_next",
             										symbol_previous="<<",
             										symbol_next=">>",
@@ -111,13 +112,15 @@
 							${makerow(pager.items[15:])}
 	                	</table>
                 	</center>
+                	</div>
+                </div>
           	</div>
-        </div>
+        
         
 		        <div class="footer">
 					<span style="text-align: center;"><b>Smart Media Machines &copy;</b></span>
 		        </div>
-		        
+	</div>  
 	       <!-- JavaScripts for file upload-->
         <script>
         var fileUploadErrors = {

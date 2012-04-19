@@ -3,8 +3,11 @@ from common import remove_tags, name_file, img_con
 
 from webhelpers import paginate
 from webhelpers.containers import unique
+
 from pyramid.httpexceptions import HTTPNotFound, HTTPFound
 from pyramid.response import Response
+from pyramid.renderers import render_to_response
+
 import time, json
 
 from os.path import abspath
@@ -51,8 +54,9 @@ def search(request):
 def download_img(request):
     file_name = request.POST.get('file_name')
     #f = open('/home/denis/Aptana Studio 3 Workspace/bfolder/bfolder/bfolder/static/img/pack/'+file_name+'_full.jpg')
-    f = open(abspath('.')+'/bfolder/static/img/pack/'+file_name+'_full.jpg')    
-    return Response(body=f.read(), content_type='application/octet-stream')
+    f = open(abspath('.')+'/bfolder/static/img/pack/'+file_name+'_full.jpg') 
+    return Response(body=f.read(), content_type='application/octet-stream',
+                    content_disposition='filename=%s'%f.name.split('/')[-1])
 
 def raiting(request):
     file_name = request.POST.get('oid')
@@ -101,6 +105,12 @@ def get_by_tag(request):
     p = request.params.get('page',1)
     page = paginate.Page(CursorWrapper(cursor), items_per_page=20, page=p, url=paginate.PageURL_WebOb(request))
     return {'pager':page}
+
+def table_ajax(request):
+    cursor = Image.objects.all().order_by('-ctime')
+    p = request.params.get('page',1)
+    page = paginate.Page(CursorWrapper(cursor), items_per_page=20, page=p, url=paginate.PageURL_WebOb(request))
+    return render_to_response('table.mako',{'pager':page})
     
 
     

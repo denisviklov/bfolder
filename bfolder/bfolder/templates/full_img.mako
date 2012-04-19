@@ -48,7 +48,13 @@
             	<div class="span10" style="margin-top: 10px;">
             		<center>
             			<h2>${img.title}</h2>
-						<img src="/static/img/pack/${img.name}_full.jpg" alt="${img.title}" title="${img.title}">
+						<img src="/static/img/pack/${img.name}_full.jpg" alt="${img.title}" title="${img.title}"><br>
+						<span>
+							<b>Теги:</b>
+							%for tag in img.tags:
+								<a href="/tag_search/${tag}">${tag}</a>
+							%endfor
+						</span>
 	            		<form action="/add_comment" method="post" id="comment" style="margin-top: 10px;">
 	            			<input type="hidden" name="file_name" value="${img.name}">
 	            			<textarea name="comment" cols="10" rows="4" required form="comment"></textarea><br/>
