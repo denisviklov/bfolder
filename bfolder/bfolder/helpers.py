@@ -8,4 +8,4 @@ def time_pretify(string):
     return '%s.%s.%d %d:%d' %(day, month, dt.year, dt.hour, dt.minute)
 
 def get_tag_cloud():
-    return Image.objects.filter(tags__ne=None).item_frequencies('tags')
+    return Image.objects.filter(tags__ne=None).item_frequencies('tags', normalize=True)

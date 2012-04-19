@@ -80,7 +80,6 @@ def upload(request):
         title = remove_tags(request.POST.get('title[]'))
         tags = remove_tags(request.POST.get('tags[]'))
         tags = [tag.strip() for tag in tags.split(',')]
-        print tags
         if title:
             n_f = name_file()
             img_con(f, n_f)

@@ -92,7 +92,7 @@
             			<% i = 0 %>
             			%for k,v in h.get_tag_cloud().iteritems():
             				%if i <= 10 :
-            					<a href="/tag_search/${k}" style="font-size: ${int(40*v)}px;">${k}</a>
+            					<a href="/tag_search/${k}" style="font-size: ${int(400*v)}px;">${k}</a>
             					<% i+=1 %>
             				%endif
             			%endfor
