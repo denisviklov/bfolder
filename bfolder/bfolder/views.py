@@ -38,7 +38,7 @@ def search_autocomplete(request):
     q = request.GET.get('term')
     if q:
         search_results = Image.objects(title__icontains=q)
-        result = unique([res.title for res in search_results])
+        result = unique([res.name for res in search_results])
         uresult = [{'id':res, 'value':res} for res in result]
         return uresult
     

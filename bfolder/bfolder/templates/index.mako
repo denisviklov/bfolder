@@ -97,13 +97,14 @@
             				%endif
             			%endfor
             		</div>
-            		<div id="content_table">
+            		
             		${pager.pager(format="$link_previous ~2~ $link_next",
             										symbol_previous="<<",
             										symbol_next=">>",
             										link_attr=link_attr,
             										curpage_attr=curpage_attr,
             										dotdot_attr=dotdot_attr)}
+            		<div id="content_table">
                 	<center>
 	                	<table style="margin-top: 10px;">
 							${makerow(pager.items[:5])}

@@ -1,4 +1,4 @@
-<% link_attr={"class": "btn small"} %>  
+<!--<% link_attr={"class": "btn small"} %>  
 <% curpage_attr={"class": "btn primary small disabled"} %>  
 <% dotdot_attr={"class": "btn small disabled"} %> 
 ${pager.pager(format="$link_previous ~2~ $link_next",
@@ -6,7 +6,7 @@ ${pager.pager(format="$link_previous ~2~ $link_next",
 								symbol_next=">>",
 								link_attr=link_attr,
 								curpage_attr=curpage_attr,
-								dotdot_attr=dotdot_attr)}
+								dotdot_attr=dotdot_attr)} -->
 <center>
 	<table style="margin-top: 10px;">
 		${makerow(pager.items[:5])}
