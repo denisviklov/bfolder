@@ -26,6 +26,8 @@ def main(global_config, **settings):
     config.add_view('bfolder.views.get_by_tag', route_name='get_by_tag', renderer='bfolder:templates/index.mako')
     config.add_route('reload_table', '/table_reload')
     config.add_view('bfolder.views.table_ajax', route_name='reload_table')
+    config.add_route('img_from_client', '/img_from_client')
+    config.add_view('bfolder.views.img_from_client', route_name='img_from_client')
     config.add_static_view('static', 'bfolder:static', cache_max_age=3600)
     config.add_subscriber(add_renderer_globals, BeforeRender)
     return config.make_wsgi_app()

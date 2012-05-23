@@ -1,5 +1,5 @@
 from model import Image, Comment, CursorWrapper
-from common import remove_tags, name_file, img_con
+from common import remove_tags, name_file, img_con, get_image_from_remote
 
 from webhelpers import paginate
 from webhelpers.containers import unique
@@ -97,7 +97,19 @@ def upload(request):
             return Response(json.dumps(resp))
     except AttributeError:
         print 'Attribute Error'
-        
+
+def img_from_client(request):
+    img_url = request.GET.get('q')
+    title = request.GET.get('img_title')
+    print img_url, title
+    img = open(get_image_from_remote(img_url))
+    print type(img)
+    n_f = name_file()
+    img_con(img, n_f)
+    i = Image(name=n_f, title=title, category='', raiting=0, ctime=int(time.time()), tags=[])
+    i.save()
+    return Response('Job well done')
+
 def get_by_tag(request):
     tag = request.matchdict.get('tag')
     cursor = Image.objects(tags=tag).order_by('-ctime')

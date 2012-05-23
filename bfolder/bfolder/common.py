@@ -2,6 +2,7 @@ import random
 import hashlib
 from PIL import Image as Img
 from os.path import abspath
+import urllib
 
 def remove_tags(input_text):
     s_list = list(input_text)
@@ -23,7 +24,7 @@ def name_file():
     return file_name
 
 def img_con(f_object, filename):
-    f = open(abspath('.')+'/bfolder/static/img/pack/'+filename+'_full.jpg','w')
+    f = open(abspath('.')+'/bfolder/static/img/pack/'+filename+'_full.jpg','w') #TODO: path must be move to config 
     f.write(f_object.read())
     f.close()
     f_object.seek(0)
@@ -41,3 +42,7 @@ def img_con(f_object, filename):
         img = img.resize([int(s*r) for s in img.size], Img.ANTIALIAS)
     img.save(abspath('.')+'/bfolder/static/img/pack/'+filename+'.jpg')
     return True
+
+def get_image_from_remote(url):
+    img = urllib.urlretrieve(url)
+    return img[0]
