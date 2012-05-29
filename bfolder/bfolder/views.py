@@ -101,9 +101,12 @@ def upload(request):
 def img_from_client(request):
     img_url = request.GET.get('q')
     title = request.GET.get('img_title')
-    print img_url, title
-    img = open(get_image_from_remote(img_url))
-    print type(img)
+    if not title:
+        return Response('Image title required')
+    try:
+        img = open(get_image_from_remote(img_url))
+    except:
+        return Response('Bad url')
     n_f = name_file()
     img_con(img, n_f)
     i = Image(name=n_f, title=title, category='', raiting=0, ctime=int(time.time()), tags=[])
