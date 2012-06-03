@@ -1,3 +1,4 @@
+## -*- coding: utf-8 -*-
 <html>
     <head>
         <meta charset="utf-8">
@@ -43,7 +44,7 @@
             		<a class="btn" href="#" id="voit_inc">
             			<i class="icon-arrow-up"></i>
             		</a>
-            		<p style="margin-top: 20px;"><a href="/" style="font-size: 18px;"><<Назад</a></p>
+            		<p style="margin-top: 20px;"><a href="/" style="font-size: 18px;">${_(u"Назад")}</a></p>
             	</div>
             	<div class="span10" style="margin-top: 10px;">
             		<center>
