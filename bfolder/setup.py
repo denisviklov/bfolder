@@ -26,6 +26,13 @@ setup(name='bfolder',
       include_package_data=True,
       zip_safe=False,
       install_requires=requires,
+      message_extractors = {'.': [
+                  ('**.py', 'lingua_python', None),
+                  ('**.pt', 'lingua_xml', None),
+                  ('templates/**.html', 'mako', None),
+                  ('templates/**.mako', 'mako', None),
+                  ('static/**', 'ignore', None),
+                   ]},
       tests_require=requires,
       test_suite="bfolder",
       entry_points = """\
