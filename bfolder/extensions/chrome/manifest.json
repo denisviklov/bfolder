@@ -1,0 +1,11 @@
+{
+  "name": "Pixchan offical add-on",
+  "version": "0.1",
+  "manifest_version": 1,
+  "description": "Upload of images on pixchan.org",
+  "background": {"scripts": ["background.js"]},
+  "permissions": [
+    "contextMenus",
+    "tabs"
+  ]
+}
