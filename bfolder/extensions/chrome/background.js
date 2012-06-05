@@ -12,7 +12,7 @@ function getClickHandler(){
                 console.log("ofogg");
                 var btn = document.getElementById("btn_send");
                 //btn.
-                window.remove()
+                window.remove();
             });
     };
 };
@@ -23,3 +23,5 @@ chrome.contextMenus.create({
   "contexts" : ["image"],
   "onclick" : getClickHandler()
 });
+
+//document.addListener

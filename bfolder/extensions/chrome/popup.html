@@ -1,9 +1,15 @@
 <html>
     <head>
+        <script src="jquery.min.js"></script>
+        <script>
+            $('#btn_send').live('click', function(){
+                console.log('ololol')
+            })
+        </script>
     </head>
     <body>
         <label>Image title</label>
         <input type="text" id="img_title">
-        <input type="submit" value="send">
+        <input type="submit" value="send" id="btn_send">
     </body>
 </html>
