@@ -29,7 +29,7 @@
             	<div class="span2" style="margin-top: 20px;">
             		<form action="/download_image" method="post">
             			<input type="hidden" name="file_name" value="${img.name}">
-            			<input type="submit" class="btn btn-primary btn-large" value="Скачать">
+            			<input type="submit" class="btn btn-primary btn-large" value="${_(u'Скачать')}">
             		</form>
             		<a class='btn' href="#" id="voit_dec">
             			<i class="icon-arrow-down"></i>
@@ -51,7 +51,7 @@
             			<h2>${img.title}</h2>
 						<img src="/static/img/pack/${img.name}_full.jpg" alt="${img.title}" title="${img.title}"><br>
 						<span>
-							<b>Теги:</b>
+							<b>${_(u"Теги")}:</b>
 							%for tag in img.tags:
 								<a href="/tag_search/${tag}">${tag}</a>
 							%endfor
@@ -59,7 +59,7 @@
 	            		<form action="/add_comment" method="post" id="comment" style="margin-top: 10px;">
 	            			<input type="hidden" name="file_name" value="${img.name}">
 	            			<textarea name="comment" cols="10" rows="4" required form="comment"></textarea><br/>
-	            			<input type="submit" class="btn" value="Отправить"/>
+	            			<input type="submit" class="btn" value="${_(u'Отправить')}"/>
 	            		</form>
 	            		<div>
 	            			%for c in comments:

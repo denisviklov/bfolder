@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bfolder 0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-06-03 20:48+0400\n"
+"POT-Creation-Date: 2012-06-30 15:12+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,90 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
+#: bfolder/templates/full_img.mako:32
+msgid "Скачать"
+msgstr "Download"
+
 #: bfolder/templates/full_img.mako:47
 msgid "Назад"
-msgstr "Назад"
+msgstr "Back"
+
+#: bfolder/templates/full_img.mako:54 bfolder/templates/index.mako:157
+msgid "Теги"
+msgstr "Tags"
+
+#: bfolder/templates/full_img.mako:62
+msgid "Отправить"
+msgstr "Send"
+
+#: bfolder/templates/index.mako:6
+msgid "хостинг мемов"
+msgstr "cloud image hosting"
+
+#: bfolder/templates/index.mako:29
+msgid "Добавить файл"
+msgstr "Add file"
+
+#: bfolder/templates/index.mako:34
+msgid "Загрузить"
+msgstr "Upload"
+
+#: bfolder/templates/index.mako:69
+msgid ""
+"это облачный сервис для хранения имиджбордовских изображений.<br>\t\t\t\t\t\t"
+"Здесь можно хранить свои паки с Йобой, макросы, и прочее непотребство.<br>"
+"\t\t\t\t\t\tВсе изображения участвуют в рейтинге и доступны для поиска.<br>"
+"\t\t\t\t\t\tДля того, чтобы загрузить картинку, необходимо указать ее "
+"название. Пожалуйста выбирайте осмысленные названия, чтобы ваше изображение "
+"соответствовало параметрам поиска.<br>\t\t\t\t\t\tДля загрузки двух и более "
+"изображений удерживайте Ctrl.<br>\t\t\t\t\t\t<p></p>\t\t\t\t\t\tТеперь у нас "
+"появился официальнный add-on для Firefox который позволяет <b>сохранять "
+"понравившиеся картинки в один клик!</b><br>\t\t\t\t\t\tПросто кликните правой"
+" кнопкой мыши по понравившейся картинке и выберите <b>send to "
+"pixchan.</b><br>\t\t\t\t\t\tПлагин можно установить из официального каталога "
+"Mozilla <a href=\"https://addons.mozilla.org/en-"
+"US/firefox/addon/pixchan_addon/\">pixchan firefox add-on</a><br>\t\t\t\t\t\t"
+"<p></p>\t\t\t\t\t\tНадеюсь тебе понравится, <b>Анон</b>.<br>"
+msgstr "" 
+"is the cloud hosting service to store images.<br>\t\t\t\t\t\t"
+"Here you can store your collection of pictures.<br>"
+"For the convenience of search engine created for all the database images.<br>"
+"Please choose a meaningful name for easy retrieval.<br>"
+"For uploading two or more pictures press down and hold Ctrl.<br>"
+"And we have official Firefox add-on for one-click image upload from anywhere<br>"
+"Just right-click on needed image and click on <b>send to pixchan</b><br>"
+"<a href=\"https://addons.mozilla.org/en-US/firefox/addon/pixchan_addon/\">Pixchan Firefox Add-on</a><br>"
+"<p></p>\t\t\t\t\t\tI hope you enjoy, <b>Anonymous</b>.<br>"
+
+#: bfolder/templates/index.mako:118
+msgid "Облако тегов"
+msgstr "Tag cloud"
+
+#: bfolder/templates/index.mako:136
+msgid "Файл очень большой"
+msgstr "File is too big"
+
+#: bfolder/templates/index.mako:137
+msgid "Файл очень маленький"
+msgstr "File is too small"
+
+#: bfolder/templates/index.mako:138
+msgid "Загрузка только картинок"
+msgstr "Only image allow"
+
+#: bfolder/templates/index.mako:139
+msgid "Слишком большое количество файлов"
+msgstr "Too many files"
+
+#: bfolder/templates/index.mako:140
+msgid "Слишком большой размер загрузки"
+msgstr "Too big amount of data"
+
+#: bfolder/templates/index.mako:141
+msgid "Непонятная ошибка"
+msgstr "Unexpected error"
+
+#: bfolder/templates/index.mako:154
+msgid "Название"
+msgstr "Title"
 

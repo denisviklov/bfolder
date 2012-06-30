@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name='yandex-verification' content='430203cf93d14992' />
-        <title>Pixchan.org - хостинг мемов</title>
+        <title>Pixchan.org - ${_(u'хостинг мемов')}</title>
         <link rel="stylesheet" href="/static/css/bootstrap.css">
         <script src="/static/js/jquery-1.7.2.min.js"></script>
         <script src="/static/js/bootstrap.js"></script>
@@ -26,12 +26,12 @@
 				                <!-- The fileinput-button span is used to style the file input field as button -->
 				                <span class="btn btn-success fileinput-button">
 				                    <i class="icon-plus icon-white"></i>
-				                    <span>Добавить файл</span>
+				                    <span>${_(u"Добавить файл")}</span>
 				                    <input type="file" name="files[]" multiple>
 				                </span>
 				                <button type="submit" class="btn btn-primary start">
 				                    <i class="icon-upload icon-white"></i>
-				                    <span>Загрузить</span>
+				                    <span>${_(u"Загрузить")}</span>
 				                </button>
 				                <!--
 				                <button type="reset" class="btn btn-warning cancel">
@@ -66,12 +66,17 @@
         		
             	<div class="span6" style="vertical-align: baseline;">
             			<div style="margin-top: 40px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 14px;">
-            			<a href="/"><b>pixChan</b></a> — это облачный сервис для хранения имиджбордовских изображений.<br>
-						Здесь можно хранить свои паки с Йобой, макросы, и прочее непотребство.<br>
-						Все изображения участвуют в рейтинге и доступны для поиска.<br>
-						Для того, чтобы загрузить картинку, необходимо указать ее название. Пожалуйста выбирайте осмысленные названия, чтобы ваше изображение соответствовало параметрам поиска.
-						Для загрузки двух и более изображений удерживайте Ctrl.<br>
-						Надеюсь тебе понравится, <b>Анон</b>.
+            			<a href="/"><b>pixChan</b></a> — ${_(u'это облачный сервис для хранения имиджбордовских изображений.<br>\
+						Здесь можно хранить свои паки с Йобой, макросы, и прочее непотребство.<br>\
+						Все изображения участвуют в рейтинге и доступны для поиска.<br>\
+						Для того, чтобы загрузить картинку, необходимо указать ее название. Пожалуйста выбирайте осмысленные названия, чтобы ваше изображение соответствовало параметрам поиска.<br>\
+						Для загрузки двух и более изображений удерживайте Ctrl.<br>\
+						<p></p>\
+						Теперь у нас появился официальнный add-on для Firefox который позволяет <b>сохранять понравившиеся картинки в один клик!</b><br>\
+						Просто кликните правой кнопкой мыши по понравившейся картинке и выберите <b>send to pixchan.</b><br>\
+						Плагин можно установить из официального каталога Mozilla <a href="https://addons.mozilla.org/en-US/firefox/addon/pixchan_addon/">pixchan firefox add-on</a><br>\
+						<p></p>\
+						Надеюсь тебе понравится, <b>Анон</b>.<br>') | n}
             			</div>
             	</div>
             	<div class="span6"><img src="/static/img/2ch_tian_logo_small_small.jpg"></div>
@@ -89,15 +94,7 @@
 	            			</center>
 	            		</form>
             		</div>
-            		<div class="well" id="tag_cloud">
-            			<% i = 0 %>
-            			%for k,v in h.get_tag_cloud().iteritems():
-            				%if i <= 10 :
-            					<a href="/tag_search/${k}" style="font-size: ${int(400*v)}px;">${k}</a>
-            					<% i+=1 %>
-            				%endif
-            			%endfor
-            		</div>
+
             		
             		${pager.pager(format="$link_previous ~2~ $link_next",
             										symbol_previous="<<",
@@ -116,8 +113,18 @@
                 	</center>
                 	</div>
                 </div>
-          	</div>
-        
+         </div><br>
+         
+        <h3>${_(u"Облако тегов")}</h3>
+        <div class="well" id="tag_cloud">
+			<% i = 0 %>
+			%for k,v in h.get_tag_cloud().iteritems():
+				%if i <= 10 :
+					<a href="/tag_search/${k}" style="font-size: ${int(800*v)}px;">${k}</a>
+					<% i+=1 %>
+				%endif
+			%endfor
+		</div>
         
 		        <div class="footer">
 					<span style="text-align: center;"><b>Smart Media Machines &copy;</b></span>
@@ -126,12 +133,12 @@
 	       <!-- JavaScripts for file upload-->
         <script>
         var fileUploadErrors = {
-            maxFileSize: 'Файл очень большой',
-            minFileSize: 'Файл очень маленький',
-            acceptFileTypes: 'Загрузка только картинок',
-            maxNumberOfFiles: 'Слишком большое количество файлов',
-            uploadedBytes: 'Слишком большой размер загрузки',
-            emptyResult: 'Хуйня какая-то'
+            maxFileSize: '${_(u"Файл очень большой")}',
+            minFileSize: '${_(u"Файл очень маленький")}',
+            acceptFileTypes: '${_(u"Загрузка только картинок")}',
+            maxNumberOfFiles: '${_(u"Слишком большое количество файлов")}',
+            uploadedBytes: '${_(u"Слишком большой размер загрузки")}',
+            emptyResult: '${_(u"Непонятная ошибка")}'
         };
         </script>
         
@@ -144,10 +151,10 @@
                 <td class="size">{%=o.formatFileSize(file.size)%}</td>
                 //target field can be declarated here
                 <td>
-                	<td class="title"><label>Название*: <input style="height: 25px;" name="title[]" required></label></td>
+                	<td class="title"><label>${_(u"Название")}*: <input style="height: 25px;" name="title[]" required></label></td>
                 </td>
                 <td>
-                	<td class="title"><label>Теги: <input style="height: 25px;" name="tags[]"></label></td>
+                	<td class="title"><label>${_(u"Теги")}: <input style="height: 25px;" name="tags[]"></label></td>
                 </td>
 
                 {% if (file.error) { %}
