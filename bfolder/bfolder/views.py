@@ -15,9 +15,6 @@ from os.path import abspath
 def index(request):
     if request.method == 'GET':
         cursor = Image.objects.all().order_by('-ctime')
-        #p = request.params.get('page',1)
-        #page = paginate.Page(CursorWrapper(cursor), items_per_page=20, page=p, url=paginate.PageURL_WebOb(request))
-        #return {'pager':page}
     else:
         q = request.POST.get('q')
         cursor = Image.objects(title__icontains=q)

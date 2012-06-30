@@ -20,7 +20,7 @@ msgstr ""
 
 #: bfolder/templates/full_img.mako:32
 msgid "Скачать"
-msgstr "Download"
+msgstr ""
 
 #: bfolder/templates/full_img.mako:47
 msgid "Назад"
@@ -28,23 +28,23 @@ msgstr ""
 
 #: bfolder/templates/full_img.mako:54 bfolder/templates/index.mako:157
 msgid "Теги"
-msgstr "Tags"
+msgstr ""
 
 #: bfolder/templates/full_img.mako:62
 msgid "Отправить"
-msgstr "Send"
+msgstr ""
 
 #: bfolder/templates/index.mako:6
 msgid "хостинг мемов"
-msgstr "cloud image hosting"
+msgstr ""
 
 #: bfolder/templates/index.mako:29
 msgid "Добавить файл"
-msgstr "Add file"
+msgstr ""
 
 #: bfolder/templates/index.mako:34
 msgid "Загрузить"
-msgstr "Upload"
+msgstr ""
 
 #: bfolder/templates/index.mako:69
 msgid ""
@@ -64,45 +64,36 @@ msgid ""
 "US/firefox/addon/pixchan_addon/\">pixchan firefox add-on</a><br>"
 "\t\t\t\t\t\t<p></p>\t\t\t\t\t\tНадеюсь тебе понравится, <b>Анон</b>.<br>"
 msgstr ""
-"is the cloud hosting service to store images.<br>\t\t\t\t\t\tHere you can"
-" store your collection of pictures.<br>For the convenience of search "
-"engine created for all the database images.<br>Please choose a meaningful"
-" name for easy retrieval.<br>For uploading two or more pictures press "
-"down and hold Ctrl.<br>And we have official Firefox add-on for one-click "
-"image upload from anywhere<br>Just right-click on needed image and click "
-"on <b>send to pixchan</b><a href=\"https://addons.mozilla.org/en-"
-"US/firefox/addon/pixchan_addon/\">Pixchan Firefox Add-on</a><br><p></p>"
-"\t\t\t\t\t\tI hope you enjoy, <b>Anonymous</b>.<br>"
 
 #: bfolder/templates/index.mako:118
 msgid "Облако тегов"
-msgstr "Tag cloud"
+msgstr ""
 
 #: bfolder/templates/index.mako:136
 msgid "Файл очень большой"
-msgstr "File is too big"
+msgstr ""
 
 #: bfolder/templates/index.mako:137
 msgid "Файл очень маленький"
-msgstr "File is too small"
+msgstr ""
 
 #: bfolder/templates/index.mako:138
 msgid "Загрузка только картинок"
-msgstr "Only image allow"
+msgstr ""
 
 #: bfolder/templates/index.mako:139
 msgid "Слишком большое количество файлов"
-msgstr "Too many files"
+msgstr ""
 
 #: bfolder/templates/index.mako:140
 msgid "Слишком большой размер загрузки"
-msgstr "Too big amount of data"
+msgstr ""
 
 #: bfolder/templates/index.mako:141
 msgid "Непонятная ошибка"
-msgstr "Unexpected error"
+msgstr ""
 
 #: bfolder/templates/index.mako:154
 msgid "Название"
-msgstr "Title"
+msgstr ""
 

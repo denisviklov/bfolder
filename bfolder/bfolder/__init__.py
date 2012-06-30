@@ -1,7 +1,8 @@
 from pyramid.config import Configurator
 from bfolder.resources import Root
 from pyramid.events import BeforeRender, NewRequest
-from subscribers import add_renderer_globals, add_localizer
+from subscribers import (add_renderer_globals, 
+                         set_accepted_languages_locale, add_localizer)
 
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
@@ -29,7 +30,8 @@ def main(global_config, **settings):
     config.add_route('img_from_client', '/img_from_client')
     config.add_view('bfolder.views.img_from_client', route_name='img_from_client')
     config.add_static_view('static', 'bfolder:static', cache_max_age=3600)
-    config.add_subscriber(add_renderer_globals, BeforeRender)
+    config.add_subscriber(set_accepted_languages_locale, NewRequest)
     config.add_subscriber(add_localizer, NewRequest)
-    config.add_translation_dirs('bfolder:locale')
+    config.add_subscriber(add_renderer_globals, BeforeRender)
+    config.add_translation_dirs('bfolder:locale/')
     return config.make_wsgi_app()
