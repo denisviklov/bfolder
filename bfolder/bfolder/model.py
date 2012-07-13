@@ -3,6 +3,7 @@ from mongoengine import StringField, Document, IntField, ListField
 
 con = connect('bfolder')
 
+
 class Image(Document):
     name = StringField()
     title = StringField()
@@ -10,13 +11,15 @@ class Image(Document):
     raiting = IntField()
     ctime = IntField()
     tags = ListField()
-    
+    lang = StringField()
+
+
 class Comment(Document):
     body = StringField()
     time = IntField()
     to_image_name = StringField()
-    
-    
+
+
 class CursorWrapper(object):
 
     """Wraps the MongoDB cursor to work with the paginate module."""
