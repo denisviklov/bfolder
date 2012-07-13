@@ -1,5 +1,6 @@
 from model import Image, Comment, CursorWrapper
-from common import remove_tags, name_file, img_con, get_image_from_remote
+from common import (remove_tags, name_file, img_con,
+                    get_image_from_remote, lang_neogitator)
 
 from webhelpers import paginate
 from webhelpers.containers import unique
@@ -87,12 +88,13 @@ def upload(request):
         title = remove_tags(request.POST.get('title[]'))
         tags = remove_tags(request.POST.get('tags[]'))
         tags = [tag.strip() for tag in tags.split(',')]
+        lang = lang_neogitator(title)
         if title:
             n_f = name_file()
             img_con(f, n_f)
             try:
                 img = Image(name=n_f, title=title, category='', raiting=0,
-                            ctime=int(time.time()), tags=tags)
+                            ctime=int(time.time()), tags=tags, lang=lang)
                 img.save()
             except Exception as e:
                 print e
@@ -109,7 +111,8 @@ def upload(request):
 
 def img_from_client(request):
     img_url = request.GET.get('q')
-    title = request.GET.get('img_title')
+    title = remove_tags(request.GET.get('img_title'))
+    lang = lang_neogitator(title)
     if not title:
         return Response('Image title required')
     try:
@@ -119,7 +122,7 @@ def img_from_client(request):
     n_f = name_file()
     img_con(img, n_f)
     i = Image(name=n_f, title=title, category='', raiting=0,
-              ctime=int(time.time()), tags=[])
+              ctime=int(time.time()), tags=[], lang=lang)
     i.save()
     return Response('Job well done')
 

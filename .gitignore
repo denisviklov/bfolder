@@ -6,3 +6,5 @@ bfolder/data/*
 bfolder/.settings/*
 bfolder/bfolder/static/img/pack/*
 bfolder/paster
+.gitignore
+bfolder/development.ini
