@@ -5,7 +5,10 @@ from pyramid.i18n import get_localizer, TranslationStringFactory
 def add_renderer_globals(event):
     event['h'] = helpers
     request = event['request']
-    event['_'] = request.translate
+    try:
+        event['_'] = request.translate
+    except AttributeError:
+        pass
     event['localizer'] = request.localizer
 
 
