@@ -33,17 +33,6 @@
 				                    <i class="icon-upload icon-white"></i>
 				                    <span>${_(u"Загрузить")}</span>
 				                </button>
-				                <!--
-				                <button type="reset" class="btn btn-warning cancel">
-				                    <i class="icon-ban-circle icon-white"></i>
-				                    <span>Cancel upload</span>
-				                </button>
-				                <button type="button" class="btn btn-danger delete">
-				                    <i class="icon-trash icon-white"></i>
-				                    <span>Delete</span>
-				                </button>
-				                <input type="checkbox" class="toggle">
-				                -->
 				            </div>
 				            
 				            <div class="span5">
@@ -115,6 +104,13 @@
                 </div>
          </div><br>
          
+             		${pager.pager(format="$link_previous ~2~ $link_next",
+    										symbol_previous="<<",
+    										symbol_next=">>",
+    										link_attr=link_attr,
+    										curpage_attr=curpage_attr,
+    										dotdot_attr=dotdot_attr)}
+        <p></p>
         <h3>${_(u"Облако тегов")}</h3>
         <div class="well" id="tag_cloud">
 			<% i = 0 %>
@@ -174,7 +170,7 @@
                 {% } %}
                 <td class="cancel">{% if (!i) { %}
                     <button class="btn btn-warning">
-                        <i class="icon-ban-circle icon-white"></i> Удалить
+                        <i class="icon-ban-circle icon-white"></i> ${_(u"Удалить")}
                     </button>
                 {% } %}</td>
             </tr>

@@ -7,9 +7,9 @@ def add_renderer_globals(event):
     request = event['request']
     try:
         event['_'] = request.translate
+        event['localizer'] = request.localizer
     except AttributeError:
         pass
-    event['localizer'] = request.localizer
 
 
 def set_accepted_languages_locale(event):

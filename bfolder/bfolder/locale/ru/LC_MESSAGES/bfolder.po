@@ -97,3 +97,6 @@ msgstr ""
 msgid "Название"
 msgstr ""
 
+#: bfolder/templates/index.mako:166
+msgid "Удалить"
+msgstr ""

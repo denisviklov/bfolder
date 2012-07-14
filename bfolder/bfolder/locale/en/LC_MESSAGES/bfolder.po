@@ -105,3 +105,6 @@ msgstr "Unexpected error"
 msgid "Название"
 msgstr "Title"
 
+#: bfolder/templates/index.mako:166
+msgid "Удалить"
+msgstr "Delete"
