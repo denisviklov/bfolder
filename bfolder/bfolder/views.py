@@ -26,6 +26,8 @@ def index(request):
     return {'pager': page}
 
 
+#TODO: rework this view cause where we dont have
+#checks on img_id in DB
 def full_img(request):
     img_id = request.matchdict.get('img_id')
     if img_id:
