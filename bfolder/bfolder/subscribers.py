@@ -13,10 +13,8 @@ def add_renderer_globals(event):
 
 
 def set_accepted_languages_locale(event):
-    #if not event.request.accept_language:
-        #return
     event.request._LOCALE_ = \
-            event.request.accept_language.best_match(('en', 'ru'), 'en')
+            event.request.accept_language.best_match(('en', 'ru'), 'ru')
 
 tsf = TranslationStringFactory('bfolder')
 

@@ -124,7 +124,7 @@
 		</div>
         
 		        <div class="footer">
-					<span style="text-align: center;"><b>Smart Media Machines &copy;</b></span>
+					<span style="text-align: center;"><b>anonym &copy;</b></span>
 		        </div>
 	</div>  
 	       <!-- JavaScripts for file upload-->

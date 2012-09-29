@@ -16,7 +16,10 @@ from os.path import abspath
 
 def index(request):
     if request.method == 'GET':
-        cursor = Image.objects(lang=request._LOCALE_).order_by('-ctime')
+        if request._LOCALE_ == 'ru':
+            cursor = Image.objects().order_by('-ctime')
+        else:
+            cursor = Image.objects(lang=request._LOCALE_).order_by('-ctime')
     else:
         q = request.POST.get('q')
         cursor = Image.objects(title__icontains=q)
@@ -108,7 +111,7 @@ def upload(request):
             resp.append({'name': filename})
             return Response(json.dumps(resp))
     except AttributeError:
-        print 'Attribute Error'
+        pass
 
 
 def img_from_client(request):
@@ -139,7 +142,10 @@ def get_by_tag(request):
 
 
 def table_ajax(request):
-    cursor = Image.objects(lang=request._LOCALE_).order_by('-ctime')
+    if request._LOCALE_ == 'ru':
+        cursor = Image.objects().order_by('-ctime')
+    else:
+        cursor = Image.objects(lang=request._LOCALE_).order_by('-ctime')
     p = request.params.get('page', 1)
     page = paginate.Page(CursorWrapper(cursor), items_per_page=20, page=p,
                          url=paginate.PageURL_WebOb(request))
