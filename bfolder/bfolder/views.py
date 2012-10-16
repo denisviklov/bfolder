@@ -86,6 +86,8 @@ def add_comment(request):
     return HTTPFound('/full_image/%s' % file_name)
 
 
+#ugly upload because we have error in
+#templates, fix it and rework upload view
 def upload(request):
     try:
         f = request.POST.get(u'files[]').file
