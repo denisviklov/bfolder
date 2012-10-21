@@ -1,10 +1,11 @@
 *.pyc
 bfolder/data/*
+bfolder/bfolder/search/data*
 .project
 .pydevproject
 .settings/*
 bfolder/.settings/*
 bfolder/bfolder/static/img/pack/*
 bfolder/paster
-.gitignore
 bfolder/development.ini
+bfolder/.coverage
