@@ -3,6 +3,11 @@ from mongoengine import StringField, Document, IntField, ListField
 
 con = connect('bfolder')
 
+#TODO: I think here we dont need split model
+#by to separate collections and comments should be
+#store inside img record
+#AND NEED REMOVE MONGOENGINE FROM PROJECT
+
 
 class Image(Document):
     name = StringField()

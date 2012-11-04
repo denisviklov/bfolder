@@ -2,8 +2,10 @@ import unittest
 import logging
 
 from pyramid import testing
+import mock
 
-from bfolder.views import index, full_img, search_autocomplete
+from bfolder.views import (index, full_img, search_autocomplete,
+                           search)
 
 
 log = logging.getLogger(__name__)
@@ -35,7 +37,13 @@ class ViewTests(unittest.TestCase):
         info = full_img(self.request)
         self.assertIsInstance(info, Exception)
 
-    def test_seqarch_autocomplete(self):
+    @mock.patch('bfolder.views.search_autocomplete')
+    def test_search_autocomplete(self, search_mocked):
         self.request.GET.update({'term': 'lol'})
-        info = search_autocomplete(self.request)
-        self.assert_(info)
+        search_mocked(self.request)
+        self.assert_(search_mocked.called)
+
+    def test_search_not_q(self):
+        self.request.POST.update({'q': None})
+        result = search(self.request)
+        self.assertIsNone(result)

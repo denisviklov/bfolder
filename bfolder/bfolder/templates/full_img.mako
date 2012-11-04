@@ -6,6 +6,8 @@
         <link rel="stylesheet" href="/static/css/bootstrap.css">
         <script src="/static/js/jquery-1.7.2.min.js"></script>
         <script src="/static/js/bootstrap.js"></script>
+        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript">stLight.options({publisher: "da2e1ef7-42cd-4c60-a78d-f01dbcd67adf"});</script>
     </head>
     <script>
     	$(function(){
@@ -50,6 +52,12 @@
             		<center>
             			<h2>${img.title}</h2>
 						<img src="/static/img/pack/${img.name}_full.jpg" alt="${img.title}" title="${img.title}"><br>
+						<div class="social_icons">
+						    <span class='st_vkontakte_vcount' displayText='Vkontakte'></span>
+                            <span class='st_facebook_vcount' displayText='Facebook'></span>
+                            <span class='st_twitter_vcount' displayText='Tweet'></span>
+                            <span class='st_googleplus_vcount' displayText='Google +'></span>
+						</div>
 						<span>
 							<b>${_(u"Теги")}:</b>
 							%for tag in img.tags:
