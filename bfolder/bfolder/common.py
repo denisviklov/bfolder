@@ -34,12 +34,6 @@ def img_con(f_object, filename):
     f.close()
     f_object.seek(0)
     img = Img.open(f_object)
-    '''
-    try:
-        img.verify()
-    except Exception as e:
-        return e.message
-    '''
     max_x, max_y = 200, 200
     x, y = float(img.size[0]), float(img.size[1])
     if x > max_x or y > max_y:

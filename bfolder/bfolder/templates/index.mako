@@ -14,24 +14,23 @@
     </head>
     
     <body style="background-color: #F8F8F8;">
-    <a href="https://github.com/viklov/pixchan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
         <div class="container">
         	<div class="row">
         		
         		<!-- JQUERY UPLOAD START HERE -->
         		<div class="span12" style="margin-top: 20px;">
-				   <form id="fileupload" action="/upload" method="POST" enctype="multipart/form-data">
+				   <form id="fileupload" action="/upload" method="post" enctype="multipart/form-data">
 				        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 				        <div class="row fileupload-buttonbar">
 				            <div class="span7">
 				                <!-- The fileinput-button span is used to style the file input field as button -->
 				                <span class="btn btn-success fileinput-button">
-				                    <i class="icon-plus icon-white"></i>
+				                    <i class="icon-plus icon-white"> </i>
 				                    <span>${_(u"Добавить файл")}</span>
 				                    <input type="file" name="files[]" multiple>
 				                </span>
 				                <button type="submit" class="btn btn-primary start">
-				                    <i class="icon-upload icon-white"></i>
+				                    <i class="icon-upload icon-white"> </i>
 				                    <span>${_(u"Загрузить")}</span>
 				                </button>
 				            </div>
@@ -39,16 +38,16 @@
 				            <div class="span5">
 				                <!-- The global progress bar -->
 				                <div class="progress progress-success progress-striped active fade">
-				                    <div class="bar" style="width:0%;"></div>
+				                    <div class="bar" style="width:0%;"> </div>
 				                </div>
 				            </div>
 				        </div>
 				        <!-- The loading indicator is shown during image processing -->
-				        <div class="fileupload-loading"></div>
+				        <div class="fileupload-loading"> </div>
 				        <br>
 				        <!-- The table listing the files available for upload/download -->
 				        <table class="table table-striped">
-				        	<tbody class="files" id="files_list" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
+				        	<tbody class="files" id="files_list" data-toggle="modal-gallery" data-target="#modal-gallery"> </tbody>
 				        </table>
 				    </form>
         		</div>
@@ -231,27 +230,41 @@
         <script src="/static/js/main.js"></script>
         <script src="/static/js/common.js"></script>
         <script src="/static/js/jquery-ui-1.8.18.custom.min.js"></script>
- 		<script>
+        
+ 		<script type="text/javascript">
+		    (function (d, w, c) {
+		    (w[c] = w[c] || []).push(function() {
+		        try {
+		            w.yaCounter13819918 = new Ya.Metrika({id:13819918, enableAll: true});
+		        } catch(e) {}
+		    });
+		    
+		    var n = d.getElementsByTagName("script")[0],
+		        s = d.createElement("script"),
+		        f = function () { n.parentNode.insertBefore(s, n); };
+		    s.type = "text/javascript";
+		    s.async = true;
+		    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+		
+		    if (w.opera == "[object Opera]") {
+		        d.addEventListener("DOMContentLoaded", f);
+		    } else { f(); }
+		})(document, window, "yandex_metrika_callbacks");
+	</script>
 
-    (function (d, w, c) {
-    (w[c] = w[c] || []).push(function() {
-        try {
-            w.yaCounter13819918 = new Ya.Metrika({id:13819918, enableAll: true});
-        } catch(e) {}
-    });
-    
-    var n = d.getElementsByTagName("script")[0],
-        s = d.createElement("script"),
-        f = function () { n.parentNode.insertBefore(s, n); };
-    s.type = "text/javascript";
-    s.async = true;
-    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-
-    if (w.opera == "[object Opera]") {
-        d.addEventListener("DOMContentLoaded", f);
-    } else { f(); }
-})(document, window, "yandex_metrika_callbacks");
 <noscript><div><img src="//mc.yandex.ru/watch/13819918" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-35916927-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+</script>
 		
     </body>
 </html>

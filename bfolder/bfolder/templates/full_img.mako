@@ -32,7 +32,7 @@
             			<input type="submit" class="btn btn-primary btn-large" value="${_(u'Скачать')}">
             		</form>
             		<a class='btn' href="#" id="voit_dec">
-            			<i class="icon-arrow-down"></i>
+            			<i class="icon-arrow-down"> </i>
             		</a>
             		<span style="font-size: 18px;" id="rait">
             			%if img.raiting:
@@ -42,12 +42,11 @@
             			%endif
             		</span>
             		<a class="btn" href="#" id="voit_inc">
-            			<i class="icon-arrow-up"></i>
+            			<i class="icon-arrow-up"> </i>
             		</a>
             		<p style="margin-top: 20px;"><a href="/" style="font-size: 18px;">${_(u"Назад")}</a></p>
             	</div>
-            	<div class="span10" style="margin-top: 10px;">
-            		<center>
+            	<div class="span10" align="center" style="margin-top: 10px;">
             			<h2>${img.title}</h2>
 						<img src="/static/img/pack/${img.name}_full.jpg" alt="${img.title}" title="${img.title}"><br>
 						<span>
@@ -58,7 +57,7 @@
 						</span>
 	            		<form action="/add_comment" method="post" id="comment" style="margin-top: 10px;">
 	            			<input type="hidden" name="file_name" value="${img.name}">
-	            			<textarea name="comment" cols="10" rows="4" required form="comment"></textarea><br/>
+	            			<textarea name="comment" cols="10" rows="4" required form="comment"> </textarea><br/>
 	            			<input type="submit" class="btn" value="${_(u'Отправить')}"/>
 	            		</form>
 	            		<div>
@@ -69,7 +68,6 @@
 	            				</div>
 	            			%endfor
 	            		</div>       		
-            		</center>
             	</div>
         	</div>
         </div>
@@ -92,7 +90,19 @@
 				        d.addEventListener("DOMContentLoaded", f);
 				    } else { f(); }
 				})(document, window, "yandex_metrika_callbacks");
-</script>
-<noscript><div><img src="//mc.yandex.ru/watch/13819918" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		</script>
+		<noscript><div><img src="//mc.yandex.ru/watch/13819918" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		
+		<script type="text/javascript">
+			  var _gaq = _gaq || [];
+			  _gaq.push(['_setAccount', 'UA-35916927-1']);
+			  _gaq.push(['_trackPageview']);
+			
+			  (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			  })();
+		</script>
     </body>
 </html>
