@@ -11,10 +11,10 @@
         <script src="/static/js/jquery-ui-1.8.18.custom.min.js"></script>
         <link rel="stylesheet" href="/static/css/smoothness/jquery-ui-1.8.18.custom.css">
         <link rel="stylesheet" href="/static/css/jquery.fileupload-ui.css">
+        <meta name="google-site-verification" content="i2wvyETaw5Ksj8Bk0qQ6KmGT_7Xegu1Q-bKHZz8rM7o" />
     </head>
     
     <body style="background-color: #F8F8F8;">
-    <a href="https://github.com/viklov/pixchan"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
         <div class="container">
         	<div class="row">
         		
@@ -231,27 +231,45 @@
         <script src="/static/js/main.js"></script>
         <script src="/static/js/common.js"></script>
         <script src="/static/js/jquery-ui-1.8.18.custom.min.js"></script>
- 		<script>
-
-    (function (d, w, c) {
-    (w[c] = w[c] || []).push(function() {
-        try {
-            w.yaCounter13819918 = new Ya.Metrika({id:13819918, enableAll: true});
-        } catch(e) {}
-    });
-    
-    var n = d.getElementsByTagName("script")[0],
-        s = d.createElement("script"),
-        f = function () { n.parentNode.insertBefore(s, n); };
-    s.type = "text/javascript";
-    s.async = true;
-    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-
-    if (w.opera == "[object Opera]") {
-        d.addEventListener("DOMContentLoaded", f);
-    } else { f(); }
-})(document, window, "yandex_metrika_callbacks");
-<noscript><div><img src="//mc.yandex.ru/watch/13819918" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+ 		<script type="text/javascript">
+		    (function (d, w, c) {
+		    (w[c] = w[c] || []).push(function() {
+		        try {
+		            w.yaCounter13819918 = new Ya.Metrika({id:13819918, enableAll: true});
+		        } catch(e) {}
+		    });
+		    
+		    var n = d.getElementsByTagName("script")[0],
+		        s = d.createElement("script"),
+		        f = function () { n.parentNode.insertBefore(s, n); };
+		    s.type = "text/javascript";
+		    s.async = true;
+		    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+		
+		    if (w.opera == "[object Opera]") {
+		        d.addEventListener("DOMContentLoaded", f);
+		    } else { f(); }
+		})(document, window, "yandex_metrika_callbacks");
+		</script>
+		<noscript>
+			<div>
+				<img src="//mc.yandex.ru/watch/13819918" style="position:absolute; left:-9999px;" alt="" />
+				</div>
+		</noscript>
+		
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-36084820-1']);
+		  _gaq.push(['_setDomainName', 'pixchan.org']);
+		  _gaq.push(['_setAllowLinker', true]);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+	</script>
 		
     </body>
 </html>

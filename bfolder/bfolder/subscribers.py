@@ -1,3 +1,5 @@
+import urlparse
+
 import helpers
 from pyramid.i18n import get_localizer, TranslationStringFactory
 
@@ -13,8 +15,16 @@ def add_renderer_globals(event):
 
 
 def set_accepted_languages_locale(event):
-    event.request._LOCALE_ = \
-            event.request.accept_language.best_match(('en', 'ru'), 'ru')
+    """.me - int, .org - russia"""
+    locale_mapping = {'me': 'en', 'org': 'ru'}
+    domain = urlparse.urlparse(event.request.host_url)
+    try:
+        zone = domain.hostname.split('.')[1]
+        event.request._LOCALE_ = locale_mapping.get(zone)
+    except IndexError:
+        event.request._LOCALE_ = 'ru'
+    #event.request._LOCALE_ = \
+            #event.request.accept_language.best_match(('en', 'ru'), 'ru')
 
 tsf = TranslationStringFactory('bfolder')
 

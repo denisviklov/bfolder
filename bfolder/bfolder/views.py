@@ -36,7 +36,8 @@ def full_img(request):
     if img_id:
         img_obj = Image.objects(name=img_id).first()
         comments_obj = Comment.objects(to_image_name=img_id)
-        return {'img': img_obj, 'comments': comments_obj}
+        back = request.referer if 'pixchan' in request.referer else '/'
+        return {'img': img_obj, 'comments': comments_obj, 'back': back}
     else:
         return HTTPNotFound('Page not found')
 

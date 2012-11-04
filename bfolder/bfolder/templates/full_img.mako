@@ -44,7 +44,7 @@
             		<a class="btn" href="#" id="voit_inc">
             			<i class="icon-arrow-up"></i>
             		</a>
-            		<p style="margin-top: 20px;"><a href="/" style="font-size: 18px;">${_(u"Назад")}</a></p>
+            		<p style="margin-top: 20px;"><a href="${back}" style="font-size: 18px;">${_(u"Назад")}</a></p>
             	</div>
             	<div class="span10" style="margin-top: 10px;">
             		<center>
@@ -92,7 +92,24 @@
 				        d.addEventListener("DOMContentLoaded", f);
 				    } else { f(); }
 				})(document, window, "yandex_metrika_callbacks");
-</script>
-<noscript><div><img src="//mc.yandex.ru/watch/13819918" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		</script>
+		<noscript>
+			<div>
+				<img src="//mc.yandex.ru/watch/13819918" style="position:absolute; left:-9999px;" alt="" />
+				</div>
+		</noscript>
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-36084820-1']);
+		  _gaq.push(['_setDomainName', 'pixchan.org']);
+		  _gaq.push(['_setAllowLinker', true]);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
     </body>
 </html>
