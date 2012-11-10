@@ -57,13 +57,18 @@
             		<center>
             			<h2>${img.title}</h2>
 						<img src="/static/img/pack/${img.name}_full.jpg" alt="${img.title}" title="${img.title}"><br>
-						<div class="social_icons">
-						    <span class='st_vkontakte_vcount' displayText='Vkontakte'></span>
-                            <span class='st_facebook_vcount' displayText='Facebook'></span>
-                            <span class='st_twitter_vcount' displayText='Tweet'></span>
-                            <span class='st_googleplus_vcount' displayText='Google +'></span>
-						</div>
-						<span>
+						<span id="button_1"></span>
+						<script>
+						         stWidget.addEntry({
+						                 "service":"sharethis",
+						                 "element":document.getElementById('button_1'),
+						                 "url":"http://pixchan.me",
+						                 "title":"${img.title}",
+						                 "type":"large",
+						                 "image":"http://pixchan.me/static/img/pack/${img.name}_full.jpg"
+						         });
+						</script>
+												<span>
 							<b>${_(u"Теги")}:</b>
 							%for tag in img.tags:
 								<a href="/tag_search/${tag}">${tag}</a>
