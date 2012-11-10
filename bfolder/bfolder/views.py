@@ -1,6 +1,6 @@
 from model import Image, Comment, CursorWrapper
 from common import (remove_tags, name_file, img_con,
-                    get_image_from_remote, lang_neogitator)
+                    get_image_from_remote, lang_neogitator, back_url)
 
 from webhelpers import paginate
 from webhelpers.containers import unique
@@ -36,9 +36,8 @@ def full_img(request):
     if img_id:
         img_obj = Image.objects(name=img_id).first()
         comments_obj = Comment.objects(to_image_name=img_id)
-        back = request.referer if request.referer else '/'
-        return {'img': img_obj, 'comments': comments_obj, 'back': back,
-                'locale': request._LOCALE_}
+        return {'img': img_obj, 'comments': comments_obj,
+                'back': back_url(request), 'locale': request._LOCALE_}
     else:
         return HTTPNotFound('Page not found')
 

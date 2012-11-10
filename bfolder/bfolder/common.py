@@ -64,3 +64,11 @@ def lang_neogitator(text):
     except Exception:
         lang = LANGS['ru']
     return lang
+
+
+def back_url(request):
+    back = '/'
+    if request.referer is not None:
+        if '?page' in request.referer:
+            back = request.referer
+    return back
