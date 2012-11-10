@@ -7,7 +7,12 @@
         <script src="/static/js/jquery-1.7.2.min.js"></script>
         <script src="/static/js/bootstrap.js"></script>
         <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-        <script type="text/javascript">stLight.options({publisher: "da2e1ef7-42cd-4c60-a78d-f01dbcd67adf"});</script>
+        <script type="text/javascript">stLight.options({
+        	publisher: "da2e1ef7-42cd-4c60-a78d-f01dbcd67adf",
+        	st_title: "${img.title}",
+        	st_image: "http://pixchan.me/static/img/pack/${img.name}_full.jpg"
+        	});
+        </script>
     </head>
     <script>
     	$(function(){
