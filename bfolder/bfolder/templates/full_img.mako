@@ -59,7 +59,7 @@
 							<%include file="social_ru.mako">
 						%else:
 							<%include file="social_en.mako">
-						%end
+						%endif
 	            		<form action="/add_comment" method="post" id="comment" style="margin-top: 10px;">
 	            			<input type="hidden" name="file_name" value="${img.name}">
 	            			<textarea name="comment" cols="10" rows="4" required form="comment"></textarea><br/>
