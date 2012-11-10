@@ -56,9 +56,9 @@
 						<img src="/static/img/pack/${img.name}_full.jpg" alt="${img.title}" title="${img.title}">
 						<br>
 						%if locale == 'ru':
-							<%include file="social_ru.mako">
+							<%include file="social_ru.mako"/>
 						%else:
-							<%include file="social_en.mako">
+							<%include file="social_en.mako"/>
 						%endif
 	            		<form action="/add_comment" method="post" id="comment" style="margin-top: 10px;">
 	            			<input type="hidden" name="file_name" value="${img.name}">

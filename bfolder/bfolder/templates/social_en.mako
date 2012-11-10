@@ -8,7 +8,6 @@
                  "element":document.getElementById('facebook'),
                  "url":"http://pixchan.me/full_image//${img.name}",
                  "title":"${img.title}",
-                 "type":"large",
                  "image":"http://pixchan.me/static/img/pack/${img.name}_full.jpg"
          });
          
@@ -17,7 +16,6 @@
                  "element":document.getElementById('googleplus'),
                  "url":"http://pixchan.me/full_image//${img.name}",
                  "title":"${img.title}",
-                 "type":"large",
                  "image":"http://pixchan.me/static/img/pack/${img.name}_full.jpg"
          });
 </script>

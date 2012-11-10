@@ -9,7 +9,6 @@
                  "element":document.getElementById('vkontakte'),
                  "url":"http://pixchan.org/full_image//${img.name}",
                  "title":"${img.title}",
-                 "type":"large",
                  "image":"http://pixchan.org/static/img/pack/${img.name}_full.jpg"
          });
          
@@ -18,7 +17,6 @@
                  "element":document.getElementById('facebook'),
                  "url":"http://pixchan.org/full_image//${img.name}",
                  "title":"${img.title}",
-                 "type":"large",
                  "image":"http://pixchan.org/static/img/pack/${img.name}_full.jpg"
          });
          
@@ -27,7 +25,6 @@
                  "element":document.getElementById('googleplus'),
                  "url":"http://pixchan.org/full_image//${img.name}",
                  "title":"${img.title}",
-                 "type":"large",
                  "image":"http://pixchan.org/static/img/pack/${img.name}_full.jpg"
          });
 </script>
