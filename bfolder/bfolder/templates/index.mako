@@ -112,16 +112,6 @@
     										curpage_attr=curpage_attr,
     										dotdot_attr=dotdot_attr)}
         <p></p>
-        <h3>${_(u"Облако тегов")}</h3>
-        <div class="well" id="tag_cloud">
-			<% i = 0 %>
-			%for k,v in h.get_tag_cloud().iteritems():
-				%if i <= 10 :
-					<a href="/tag_search/${k}" style="font-size: ${int(800*v)}px;">${k}</a>
-					<% i+=1 %>
-				%endif
-			%endfor
-		</div>
         
 		        <div class="footer">
 					<span style="text-align: center;"><b>anonym &copy;</b></span>
