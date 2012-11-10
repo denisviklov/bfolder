@@ -26,7 +26,7 @@ def index(request):
     p = request.params.get('page', 1)
     page = paginate.Page(CursorWrapper(cursor), items_per_page=20, page=p,
                          url=paginate.PageURL_WebOb(request))
-    return {'pager': page}
+    return {'pager': page, 'locale': request._LOCALE_}
 
 
 #TODO: rework this view cause where we dont have
@@ -36,8 +36,9 @@ def full_img(request):
     if img_id:
         img_obj = Image.objects(name=img_id).first()
         comments_obj = Comment.objects(to_image_name=img_id)
-        back = request.referer if 'pixchan' in request.referer else '/'
-        return {'img': img_obj, 'comments': comments_obj, 'back': back}
+        back = request.referer if request.referer else '/'
+        return {'img': img_obj, 'comments': comments_obj, 'back': back,
+                'locale': request._LOCALE_}
     else:
         return HTTPNotFound('Page not found')
 
@@ -60,7 +61,7 @@ def search(request):
                 page = paginate.Page(CursorWrapper(cursor), items_per_page=20,
                                      page=p,
                                      url=paginate.PageURL_WebOb(request))
-                return {'pager': page}
+                return {'pager': page, 'locale': request._LOCALE_}
 
 
 def download_img(request):
