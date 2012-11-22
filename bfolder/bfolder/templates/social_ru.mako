@@ -7,7 +7,7 @@
 		stWidget.addEntry({
                  "service":"vkontakte",
                  "element":document.getElementById('vkontakte'),
-                 "url":"http://pixchan.org/full_image//${img.name}",
+                 "url":"http://pixchan.org/full_image/${img.name}",
                  "title":"${img.title}",
                  "image":"http://pixchan.org/static/img/pack/${img.name}_full.jpg"
          });
@@ -15,7 +15,7 @@
          stWidget.addEntry({
                  "service":"facebook",
                  "element":document.getElementById('facebook'),
-                 "url":"http://pixchan.org/full_image//${img.name}",
+                 "url":"http://pixchan.org/full_image/${img.name}",
                  "title":"${img.title}",
                  "image":"http://pixchan.org/static/img/pack/${img.name}_full.jpg"
          });
@@ -23,7 +23,7 @@
          stWidget.addEntry({
                  "service":"googleplus",
                  "element":document.getElementById('googleplus'),
-                 "url":"http://pixchan.org/full_image//${img.name}",
+                 "url":"http://pixchan.org/full_image/${img.name}",
                  "title":"${img.title}",
                  "image":"http://pixchan.org/static/img/pack/${img.name}_full.jpg"
          });
