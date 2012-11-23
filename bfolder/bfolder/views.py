@@ -153,3 +153,24 @@ def table_ajax(request):
     page = paginate.Page(CursorWrapper(cursor), items_per_page=20, page=p,
                          url=paginate.PageURL_WebOb(request))
     return render_to_response('table.mako', {'pager': page})
+
+def img_admin_page(request):
+    return Response('ololo')
+
+def admin_login(request):
+    if request.method == 'POST':
+        #import ipdb; ipdb.set_trace()
+        login = 'root'
+        password = 'randomjunglist84'
+        if all([request.POST.get('login') == login,
+                request.POST.get('password') == password]):
+            #request.session.clear()
+            #request.session['auth ticket'] = 'add'
+            response = Response()
+            response.set_cookie('auth_ticket', value='add', max_age=31536000)
+            return HTTPFound('/', headers=response.headers)
+        else:
+            return render_to_response('login.mako', {})
+    else:
+        return render_to_response('login.mako', {})
+        
