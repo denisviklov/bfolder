@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bfolder 0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-06-30 15:12+0400\n"
+"POT-Creation-Date: 2012-11-24 08:11-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: bfolder/templates/full_img.mako:32
+#: bfolder/templates/full_img.mako:37
 msgid "Скачать"
 msgstr ""
 
-#: bfolder/templates/full_img.mako:47
+#: bfolder/templates/full_img.mako:52
 msgid "Назад"
 msgstr ""
 
-#: bfolder/templates/full_img.mako:54 bfolder/templates/index.mako:157
-msgid "Теги"
-msgstr ""
-
-#: bfolder/templates/full_img.mako:62
+#: bfolder/templates/full_img.mako:66
 msgid "Отправить"
 msgstr ""
 
@@ -37,62 +33,59 @@ msgstr ""
 msgid "хостинг мемов"
 msgstr ""
 
-#: bfolder/templates/index.mako:29
+#: bfolder/templates/index.mako:30
 msgid "Добавить файл"
 msgstr ""
 
-#: bfolder/templates/index.mako:34
+#: bfolder/templates/index.mako:35
 msgid "Загрузить"
 msgstr ""
 
-#: bfolder/templates/index.mako:69
+#: bfolder/templates/index.mako:59
 msgid ""
-"это облачный сервис для хранения имиджбордовских изображений.<br>\t\t\t\t\t\t"
-"Здесь можно хранить свои паки с Йобой, макросы, и прочее непотребство.<br>"
-"\t\t\t\t\t\tВсе изображения участвуют в рейтинге и доступны для поиска.<br>"
-"\t\t\t\t\t\tДля того, чтобы загрузить картинку, необходимо указать ее "
-"название. Пожалуйста выбирайте осмысленные названия, чтобы ваше изображение "
-"соответствовало параметрам поиска.<br>\t\t\t\t\t\tДля загрузки двух и более "
-"изображений удерживайте Ctrl.<br>\t\t\t\t\t\t<p></p>\t\t\t\t\t\tТеперь у нас "
-"появился официальнный add-on для Firefox который позволяет <b>сохранять "
-"понравившиеся картинки в один клик!</b><br>\t\t\t\t\t\tПросто кликните правой"
-" кнопкой мыши по понравившейся картинке и выберите <b>send to "
+"это облачный сервис хранения мемов.<br>            \t\t\t<p></p>\t\t\t\t\t\t"
+"Теперь у нас появился официальнный add-on для Firefox который позволяет "
+"<b>сохранять понравившиеся картинки в один клик!</b><br>\t\t\t\t\t\tПросто "
+"кликните правой кнопкой мыши по понравившейся картинке и выберите <b>send to "
 "pixchan.</b><br>\t\t\t\t\t\tПлагин можно установить из официального каталога "
 "Mozilla <a href=\"https://addons.mozilla.org/en-"
 "US/firefox/addon/pixchan_addon/\">pixchan firefox add-on</a><br>\t\t\t\t\t\t"
 "<p></p>\t\t\t\t\t\tНадеюсь тебе понравится, <b>Анон</b>.<br>"
-msgstr "" 
-
-
-#: bfolder/templates/index.mako:118
-msgid "Облако тегов"
 msgstr ""
 
-#: bfolder/templates/index.mako:136
+#: bfolder/templates/index.mako:119
 msgid "Файл очень большой"
 msgstr ""
 
-#: bfolder/templates/index.mako:137
+#: bfolder/templates/index.mako:120
 msgid "Файл очень маленький"
 msgstr ""
 
-#: bfolder/templates/index.mako:138
+#: bfolder/templates/index.mako:121
 msgid "Загрузка только картинок"
 msgstr ""
 
-#: bfolder/templates/index.mako:139
+#: bfolder/templates/index.mako:122
 msgid "Слишком большое количество файлов"
 msgstr ""
 
-#: bfolder/templates/index.mako:140
+#: bfolder/templates/index.mako:123
 msgid "Слишком большой размер загрузки"
 msgstr ""
 
-#: bfolder/templates/index.mako:141
+#: bfolder/templates/index.mako:124
 msgid "Непонятная ошибка"
 msgstr ""
 
-#: bfolder/templates/index.mako:154
+#: bfolder/templates/index.mako:137
 msgid "Название"
+msgstr ""
+
+#: bfolder/templates/index.mako:140
+msgid "Теги"
+msgstr ""
+
+#: bfolder/templates/index.mako:160
+msgid "Удалить"
 msgstr ""
 
