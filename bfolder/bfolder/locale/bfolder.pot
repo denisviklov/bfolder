@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bfolder 0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-11-24 08:11-0800\n"
+"POT-Creation-Date: 2012-11-24 08:30-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,10 @@ msgstr ""
 
 #: bfolder/templates/full_img.mako:66
 msgid "Отправить"
+msgstr ""
+
+#: bfolder/templates/index.mako:6
+msgid "org"
 msgstr ""
 
 #: bfolder/templates/index.mako:6
