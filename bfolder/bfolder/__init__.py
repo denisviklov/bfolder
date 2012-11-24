@@ -5,8 +5,10 @@ from pyramid.authorization import ACLAuthorizationPolicy
 from pyramid.session import UnencryptedCookieSessionFactoryConfig
 
 from bfolder.resources import Root, SimpleAdmin
-from subscribers import (add_renderer_globals, 
+from subscribers import (add_renderer_globals,
                          set_accepted_languages_locale, add_localizer)
+from .security import groupfinder
+
 
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
@@ -17,7 +19,7 @@ def main(global_config, **settings):
     config = Configurator(root_factory=Root, settings=settings, 
                           authentication_policy=authentication_policy,
                           authorization_policy=authorization_policy,
-                          session_factory = my_session_factory)
+                          session_factory=my_session_factory)
     config.add_view('bfolder.views.index',
                     context='bfolder:resources.Root',
                     renderer='bfolder:templates/index.mako')
@@ -39,8 +41,9 @@ def main(global_config, **settings):
     config.add_view('bfolder.views.table_ajax', route_name='reload_table')
     config.add_route('img_from_client', '/img_from_client')
     config.add_view('bfolder.views.img_from_client', route_name='img_from_client')
-    config.add_view('bfolder.views.img_admin_page', route_name='img_admin_page', context=SimpleAdmin,
-                                                                                    permission='add')
+    config.add_view('bfolder.views.img_admin_page', route_name='img_admin_page',
+                                                            context=SimpleAdmin,
+                                                            permission='edit')
     config.add_route('img_admin_page', '/img_admin_page')
     config.add_view('bfolder.views.admin_login', route_name='admin_login')
     config.add_route('admin_login', '/admin_login')
