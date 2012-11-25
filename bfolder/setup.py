@@ -7,7 +7,7 @@ README = open(os.path.join(here, 'README.txt')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = ['pyramid', 'pyramid_debugtoolbar', 'mongoengine', 
-	    'pyramid_beaker', 'PIL', 'webhelpers', 'mock']
+	    'pyramid_beaker', 'PIL', 'webhelpers', 'mock', 'cornice']
 
 setup(name='bfolder',
       version='0.0',

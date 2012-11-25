@@ -15,11 +15,15 @@
     </head>
     
     <body style="background-color: #F8F8F8;">
+    %if is_admin:
+    	<%namespace name="admin" file="admin.mak"/>
+    		${admin.create()}
+    %endif
         <div class="container">
         	<div class="row">
         		
         		<!-- JQUERY UPLOAD START HERE -->
-        		<div class="span12" style="margin-top: 20px;">
+        		<div class="span12" style="margin-top: 60px;">
 				   <form id="fileupload" action="/upload" method="POST" enctype="multipart/form-data">
 				        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 				        <div class="row fileupload-buttonbar">

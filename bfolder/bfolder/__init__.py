@@ -52,4 +52,6 @@ def main(global_config, **settings):
     config.add_subscriber(add_localizer, NewRequest)
     config.add_subscriber(add_renderer_globals, BeforeRender)
     config.add_translation_dirs('bfolder:locale/')
+    config.include("cornice")
+    config.scan("bfolder.api")
     return config.make_wsgi_app()

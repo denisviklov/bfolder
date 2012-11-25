@@ -15,7 +15,7 @@ from common import (remove_tags, name_file, img_con,
 
 
 def index(request):
-    print authenticated_userid(request)
+    is_admin = bool(authenticated_userid(request))
     if request.method == 'GET':
         if request._LOCALE_ == 'ru':
             cursor = Image.objects().order_by('-ctime')
@@ -27,7 +27,7 @@ def index(request):
     p = request.params.get('page', 1)
     page = paginate.Page(CursorWrapper(cursor), items_per_page=20, page=p,
                          url=paginate.PageURL_WebOb(request))
-    return {'pager': page, 'locale': request._LOCALE_}
+    return {'pager': page, 'locale': request._LOCALE_, 'is_admin': is_admin}
 
 
 #TODO: rework this view cause where we dont have
