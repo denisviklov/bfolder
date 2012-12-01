@@ -41,12 +41,11 @@ def main(global_config, **settings):
     config.add_view('bfolder.views.table_ajax', route_name='reload_table')
     config.add_route('img_from_client', '/img_from_client')
     config.add_view('bfolder.views.img_from_client', route_name='img_from_client')
-    config.add_view('bfolder.views.img_admin_page', route_name='img_admin_page',
-                                                            context=SimpleAdmin,
-                                                            permission='edit')
     config.add_route('img_admin_page', '/img_admin_page')
     config.add_view('bfolder.views.admin_login', route_name='admin_login')
-    config.add_route('admin_login', '/admin_login')
+    config.add_route('admin_login', '/godmode')
+    config.add_view('bfolder.views.admin_logout', route_name='admin_logout')
+    config.add_route('admin_logout', '/logout')
     config.add_static_view('static', 'bfolder:static', cache_max_age=3600)
     config.add_subscriber(set_accepted_languages_locale, NewRequest)
     config.add_subscriber(add_localizer, NewRequest)

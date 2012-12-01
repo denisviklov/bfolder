@@ -11,7 +11,7 @@ img_api = Service(name='image_api', path='/img/{image_hash}', description="Admin
 
 @img_api.post()
 def change_img_info(request):
-    if authenticated_userid(request) == 'editor':
+    if authenticated_userid(request) == 'godmode':
         image_hash = request.matchdict('image_hash')
         img = Image.objects(name=image_hash).first()
         if not img:
@@ -27,7 +27,7 @@ def change_img_info(request):
 
 @img_api.delete()
 def delete_img(request):
-    if authenticated_userid(request) == 'editor':
+    if authenticated_userid(request) == 'godmode':
         image_hash = request.matchdict.get('image_hash')
         img = Image.objects(name=image_hash).first()
         if not img:

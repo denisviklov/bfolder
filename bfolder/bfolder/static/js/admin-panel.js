@@ -24,9 +24,10 @@ $(function() {
 				currentSet.pop(i);
 				};
 		});
-		
+	
 		if (!is_exist){
 			this.set[this.set.length] = imgObj;
+			console.log(this.set);
 			return true;
 		} else {
 			return false;}
@@ -51,20 +52,29 @@ $(function() {
 	$('#del_all').click(function(){
 		imagesChoosen.delAll();
 	});
-	
+	var speedAnimation = '';
 	$('#content_table a').click(function(event){
 		event.preventDefault();
 		el = new Image($(this).attr('href'));
 		if (imagesChoosen.process(el)){
-			if (imagesChoosen.length() > 0){
-				$('#not_select').hide();
-			}
-			if (imagesChoosen.length() > 1){
-				$('#del_all').show();
-			}
+			console.log(imagesChoosen.length());
 			$(this).parent().css("border", "3px dotted orange");	
 		} else {
 			$(this).parent().css("border", "None");
+		}
+		
+		if (imagesChoosen.length() == 0){
+			$('#not_select').show(speedAnimation);
+			$('#editor-form').hide(speedAnimation);
+			$('#del_all').hide(speedAnimation);
+		} else if (imagesChoosen.length() == 1){
+			$('#editor-form').show(speedAnimation);
+			$('#not_select').hide();
+			$('#del_all').hide(speedAnimation);
+		} else if (imagesChoosen.length() > 1){
+			$('#del_all').show(speedAnimation);
+			$('#editor-form').hide(speedAnimation);
+			$('#not_select').hide(speedAnimation);
 		}
 		console.log(imagesChoosen.length());
 		return false;

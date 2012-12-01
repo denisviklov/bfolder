@@ -16,7 +16,7 @@
     
     <body style="background-color: #F8F8F8;">
     %if is_admin:
-    	<%namespace name="admin" file="admin.mak"/>
+    	<%namespace name="admin" file="admin.mako"/>
     		${admin.create()}
     %endif
         <div class="container">
@@ -144,7 +144,7 @@
                 <td>
                 	<td class="title"><label>${_(u"Название")}*: <input style="height: 25px;" name="title[]" required></label></td>
                 </td>
-                <td>
+                <td style="display: none;">
                 	<td class="title"><label>${_(u"Теги")}: <input style="height: 25px;" name="tags[]"></label></td>
                 </td>
 

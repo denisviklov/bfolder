@@ -156,19 +156,21 @@ def table_ajax(request):
     return render_to_response('table.mako', {'pager': page})
 
 
-def img_admin_page(request):
-    return Response('ololo')
-
-
 def admin_login(request):
     if request.method == 'POST':
-        login = 'editor'
-        password = 'editor'
-        if all([request.POST.get('login') == login,
-                request.POST.get('password') == password]):
-            headers = remember(request, login)
+        #HARDCODE HERE
+        #login = 'godmode'
+        password = 'iddqd'
+        if all([request.POST.get('password') == password]):
+            headers = remember(request, 'godmode')
             return HTTPFound('/', headers=headers)
         else:
             return render_to_response('login.mako', {})
     else:
         return render_to_response('login.mako', {})
+
+
+def admin_logout(request):
+    headers = forget(request)
+    return HTTPFound(location='/', headers=headers)
+
