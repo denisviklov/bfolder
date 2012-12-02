@@ -10,6 +10,7 @@ $(function() {
 		return imgHashUrl.slice(12);
 	}
 	
+	
 	function ImageSet(){
 		this.set = [];
 	}
@@ -27,10 +28,20 @@ $(function() {
 	
 		if (!is_exist){
 			this.set[this.set.length] = imgObj;
-			console.log(this.set);
 			return true;
 		} else {
 			return false;}
+	};
+	//IMPORTANT: doesn't work properly on second interaction
+	//solve THIS solve image attrs edition
+	ImageSet.prototype.getEditable = function(){
+		if (this.set.length == 1){
+			var imgHash = this.set[0].imgHash;
+			var txt = $('a[href$='+imgHash+']').text().trim();
+			var lang = $('a[href$='+imgHash+'] input').val();
+			console.log({'txt': txt, 'lang': lang, 'imgHash': imgHash});
+			return {'txt': txt, 'lang': lang, 'imgHash': imgHash};
+		}
 	};
 	ImageSet.prototype.delAll = function(){
 		var currentSet = this.set;
@@ -52,12 +63,25 @@ $(function() {
 	$('#del_all').click(function(){
 		imagesChoosen.delAll();
 	});
+	
+	
+	$('#edit').click(function(){
+		var editable = imagesChoosen.getEditable();
+		$.ajax({
+			url: '/img/'+editable.imgHash,
+			type: 'POST',
+			data: {'title': editable.txt, 'lang': editable.lang},
+			success: function(){},
+			error: function(){}
+		});
+	});
+	
+	
 	var speedAnimation = '';
 	$('#content_table a').click(function(event){
 		event.preventDefault();
 		el = new Image($(this).attr('href'));
 		if (imagesChoosen.process(el)){
-			console.log(imagesChoosen.length());
 			$(this).parent().css("border", "3px dotted orange");	
 		} else {
 			$(this).parent().css("border", "None");
@@ -69,6 +93,9 @@ $(function() {
 			$('#del_all').hide(speedAnimation);
 		} else if (imagesChoosen.length() == 1){
 			$('#editor-form').show(speedAnimation);
+			var editableFields = imagesChoosen.getEditable();
+			$('#locale_select option[value="'+editableFields.lang+'"]').attr('selected', true);
+			$('#name-editor-fld').val(editableFields.txt);
 			$('#not_select').hide();
 			$('#del_all').hide(speedAnimation);
 		} else if (imagesChoosen.length() > 1){
@@ -76,7 +103,6 @@ $(function() {
 			$('#editor-form').hide(speedAnimation);
 			$('#not_select').hide(speedAnimation);
 		}
-		console.log(imagesChoosen.length());
 		return false;
 	});
 })

@@ -274,6 +274,7 @@
 		<td align="center" style="vertical-align: bottom;">
 			<a href="/full_image/${img.name}">
 			<img src="/static/img/pack/${img.name}.jpg" title="${img.title}" alt="${img.title}">
+			<input type="hidden" name="locale" value="${img.lang}">
 			<center>${img.title}</center></a>
 		</td>
     %endfor
