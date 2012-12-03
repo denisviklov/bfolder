@@ -11,8 +11,8 @@
                             <option value="en">Английский</option>
                             <option value="ru">Русский</option>
                         </select>
-                        <button type="submit" class="btn btn-success" id="edit">Редактировать</button>
-                        <button type="submit" class="btn btn-danger" id="delete">Удалить</button>
+                        <button class="btn btn-success" id="edit">Редактировать</button>
+                        <button class="btn btn-danger" id="delete">Удалить</button>
                     </form>
 		    		<ul class="nav">
 		    			<!-- <li class="active"><a href="#">Home</a></li> -->

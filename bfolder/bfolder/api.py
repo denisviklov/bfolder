@@ -1,6 +1,6 @@
 import json
 
-from pyramid.httpexceptions import HTTPForbidden, HTTPAccepted, HTTPNotFound
+from pyramid.httpexceptions import HTTPForbidden, HTTPOk, HTTPNotFound
 from pyramid.security import authenticated_userid
 from cornice import Service
 
@@ -18,11 +18,10 @@ def change_img_info(request):
             return HTTPNotFound()
         title = request.POST.get('title')
         lang = request.POST.get('lang')
-        #import ipdb; ipdb.set_trace()
         if title: img['title'] = title
         if lang: img['lang'] = lang
         img.save()
-        return HTTPAccepted()
+        return HTTPOk()
     return HTTPForbidden()
 
 
@@ -34,7 +33,7 @@ def delete_img(request):
         if not img:
             return HTTPNotFound()
         img.delete()
-        return HTTPAccepted()
+        return HTTPOk()
     return HTTPForbidden()
 
 
