@@ -23,8 +23,9 @@ def xml_gen():
                     xml.element('title', text=record.title)
                     xml.element('lang', text=record.lang)
                     xml.element('file', text=record.name)
-                    xml.element('raiting', text='%s' %
-                                str(record.raiting) if record.raiting else '0')
+                    xml.element('raiting', text='%d' %
+                                int(record.raiting) if record.raiting else 0)
     return 0
+
 
 xml_gen()
