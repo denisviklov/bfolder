@@ -15,11 +15,15 @@
     </head>
     
     <body style="background-color: #F8F8F8;">
+    %if is_admin:
+    	<%namespace name="admin" file="admin.mako"/>
+    		${admin.create()}
+    %endif
         <div class="container">
         	<div class="row">
         		
         		<!-- JQUERY UPLOAD START HERE -->
-        		<div class="span12" style="margin-top: 20px;">
+        		<div class="span12" style="margin-top: 60px;">
 				   <form id="fileupload" action="/upload" method="POST" enctype="multipart/form-data">
 				        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 				        <div class="row fileupload-buttonbar">
@@ -136,7 +140,7 @@
                 <td>
                 	<td class="title"><label>${_(u"Название")}*: <input style="height: 25px;" name="title[]" required></label></td>
                 </td>
-                <td>
+                <td style="display: none;">
                 	<td class="title"><label>${_(u"Теги")}: <input style="height: 25px;" name="tags[]"></label></td>
                 </td>
 
@@ -266,6 +270,7 @@
 		<td align="center" style="vertical-align: bottom;">
 			<a href="/full_image/${img.name}">
 			<img src="/static/img/pack/${img.name}.jpg" title="${img.title}" alt="${img.title}">
+			<input type="hidden" name="locale" value="${img.lang}">
 			<center>${img.title}</center></a>
 		</td>
     %endfor

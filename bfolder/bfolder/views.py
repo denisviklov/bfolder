@@ -1,20 +1,21 @@
-from model import Image, Comment, CursorWrapper
-from common import (remove_tags, name_file, img_con,
-                    get_image_from_remote, lang_neogitator, back_url)
-
-from webhelpers import paginate
-from webhelpers.containers import unique
-
-from pyramid.httpexceptions import HTTPNotFound, HTTPFound
-from pyramid.response import Response
-from pyramid.renderers import render_to_response
-
 import time
 import json
 from os.path import abspath
 
+from pyramid.httpexceptions import HTTPNotFound, HTTPFound
+from pyramid.response import Response
+from pyramid.renderers import render_to_response
+from pyramid.security import remember, forget, authenticated_userid
+from webhelpers import paginate
+from webhelpers.containers import unique
+
+from model import Image, Comment, CursorWrapper
+from common import (remove_tags, name_file, img_con,
+                    get_image_from_remote, lang_neogitator, back_url)
+
 
 def index(request):
+    is_admin = bool(authenticated_userid(request))
     if request.method == 'GET':
         if request._LOCALE_ == 'ru':
             cursor = Image.objects().order_by('-ctime')
@@ -26,7 +27,7 @@ def index(request):
     p = request.params.get('page', 1)
     page = paginate.Page(CursorWrapper(cursor), items_per_page=20, page=p,
                          url=paginate.PageURL_WebOb(request))
-    return {'pager': page, 'locale': request._LOCALE_}
+    return {'pager': page, 'locale': request._LOCALE_, 'is_admin': is_admin}
 
 
 #TODO: rework this view cause where we dont have
@@ -153,3 +154,23 @@ def table_ajax(request):
     page = paginate.Page(CursorWrapper(cursor), items_per_page=20, page=p,
                          url=paginate.PageURL_WebOb(request))
     return render_to_response('table.mako', {'pager': page})
+
+
+def admin_login(request):
+    if request.method == 'POST':
+        #HARDCODE HERE
+        #login = 'godmode'
+        password = 'iddqd'
+        if all([request.POST.get('password') == password]):
+            headers = remember(request, 'godmode')
+            return HTTPFound('/', headers=headers)
+        else:
+            return render_to_response('login.mako', {})
+    else:
+        return render_to_response('login.mako', {})
+
+
+def admin_logout(request):
+    headers = forget(request)
+    return HTTPFound(location='/', headers=headers)
+
