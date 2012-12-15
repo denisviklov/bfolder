@@ -17,7 +17,7 @@
 		    		<ul class="nav">
 		    			<!-- <li class="active"><a href="#">Home</a></li> -->
 		    			<li id="not_select" style="margin-top: 10px;">Ни одной картинки еще не выбрано</li>
-		    			<li><a id="del_all" href="#" style="display: none;">Удалить все</a></li>
+		    			<li><a id="del_all" href="javascript:void(0)" style="display: none;">Удалить все</a></li>
 		    			<li><a href="/logout" style="margin-left: 80%;">Выйти</a></li>
 		    		</ul>
 		    	</div>

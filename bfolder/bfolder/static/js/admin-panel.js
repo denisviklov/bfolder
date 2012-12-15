@@ -90,7 +90,7 @@ $(function() {
 	
 	
 	var speedAnimation = '';
-	$('#content_table a').on('click', function(event){
+	$('#content_table a').live('click', function(event){
 		event.preventDefault();
 		el = new Image($(this).attr('href'));
 		if (imagesChoosen.process(el)){
