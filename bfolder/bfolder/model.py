@@ -1,5 +1,5 @@
 from mongoengine import connect
-from mongoengine import StringField, Document, IntField, ListField
+from mongoengine import StringField, Document, IntField, ListField, ObjectIdField
 
 con = connect('bfolder')
 
@@ -17,6 +17,8 @@ class Image(Document):
     ctime = IntField()
     tags = ListField()
     lang = StringField()
+    collection_id = ObjectIdField()
+    type = StringField()
 
 
 class Comment(Document):

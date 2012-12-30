@@ -1,3 +1,5 @@
+#coding: utf-8
+
 import time
 import json
 from os.path import abspath
@@ -8,6 +10,7 @@ from pyramid.renderers import render_to_response
 from pyramid.security import remember, forget, authenticated_userid
 from webhelpers import paginate
 from webhelpers.containers import unique
+from mongoengine import Q
 
 from model import Image, Comment, CursorWrapper
 from common import (remove_tags, name_file, img_con,
@@ -18,7 +21,7 @@ def index(request):
     is_admin = bool(authenticated_userid(request))
     if request.method == 'GET':
         if request._LOCALE_ == 'ru':
-            cursor = Image.objects().order_by('-ctime')
+            cursor = Image.objects(Q(collection_id__not__exists=True)).order_by('-ctime')
         else:
             cursor = Image.objects(lang=request._LOCALE_).order_by('-ctime')
     else:
@@ -88,7 +91,7 @@ def add_comment(request):
     return HTTPFound('/full_image/%s' % file_name)
 
 
-#ugly upload because we have error in
+#ugly upload because I have error in
 #templates, fix it and rework upload view
 def upload(request):
     try:
@@ -171,6 +174,6 @@ def admin_login(request):
 
 
 def admin_logout(request):
-    headers = forget(request)
-    return HTTPFound(location='/', headers=headers)
+    return HTTPFound(location='/', headers=forget(request))
+
 

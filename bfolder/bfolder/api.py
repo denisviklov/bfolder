@@ -1,12 +1,20 @@
-import json
+#coding: utf-8
 
-from pyramid.httpexceptions import HTTPForbidden, HTTPOk, HTTPNotFound
+import json
+import time
+
+from pyramid.httpexceptions import HTTPForbidden, HTTPOk, HTTPNotFound, HTTPBadRequest
 from pyramid.security import authenticated_userid
 from cornice import Service
 
 from model import Image
+from parser import Parser
+from common import name_file, img_con
 
-img_api = Service(name='image_api', path='/img/{image_hash}', description="Admin api")
+img_api = Service(name='image_api', path='/img/{image_hash}',
+                  description="Admin api")
+collection_api = Service(name='collection_api', path='/collection/{collection_id}',
+                         description="Collection api")
 
 
 @img_api.post()
@@ -37,3 +45,27 @@ def delete_img(request):
     return HTTPForbidden()
 
 
+@collection_api.post()
+def get_thread_images(request):
+    parser = Parser(request.POST.get('thread_url'))
+    #import ipdb; ipdb.set_trace()
+    if request.POST.get('thread_url'):
+        if request.POST.get('collection_name'):
+            collection = Image(name=request.POST.get('collection_name'),
+                               raiting=0, ctime=int(time.time()), tags=[],
+                               lang='ru', type='collection')
+            collection = collection.save()
+            #all goin OK ;)
+            for img_file_obj in parser.parse_iter_images():
+                filename = name_file()
+                try:
+                    img_con(img_file_obj, filename)
+                    i = Image(name=filename, title='', category='', raiting=0,
+                              ctime=int(time.time()), tags=[], lang='ru',
+                              collection_id=collection.id)
+                    i.save()
+                except Exception:
+                    pass
+            return HTTPOk()
+        else:
+            return HTTPBadRequest()

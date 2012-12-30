@@ -1,3 +1,4 @@
+import imghdr
 import random
 import hashlib
 from PIL import Image as Img
@@ -29,29 +30,30 @@ def name_file():
 def img_con(f_object, filename):
     #TODO: path must be move to config
     f = open(abspath('.') + '/bfolder/static/img/pack/' + filename +
-             '_full.jpg', 'w')
+             '_full.%s' % 'jpg', 'w')
     f.write(f_object.read())
     f.close()
     f_object.seek(0)
+    #try:
     img = Img.open(f_object)
-    '''
-    try:
-        img.verify()
-    except Exception as e:
-        return e.message
-    '''
-    max_x, max_y = 200, 200
-    x, y = float(img.size[0]), float(img.size[1])
-    if x > max_x or y > max_y:
-        r = min(max_x / x, max_y / y)
-        img = img.resize([int(s * r) for s in img.size], Img.ANTIALIAS)
-    img.save(abspath('.') + '/bfolder/static/img/pack/' + filename + '.jpg')
+    #except:
+        #img = None
+        #print 'cant detect image'
+    if img:
+        max_x, max_y = 200, 200
+        x, y = float(img.size[0]), float(img.size[1])
+        if x > max_x or y > max_y:
+            r = min(max_x / x, max_y / y)
+            img = img.resize([int(s * r) for s in img.size], Img.ANTIALIAS)
+            #try:
+            img.save(abspath('.') + '/bfolder/static/img/pack/' + filename + '.' + 'jpg')
+            #except:
+                #print 'cant save'
     return True
 
 
 def get_image_from_remote(url):
-    img = urllib.urlretrieve(url)
-    return img[0]
+    return urllib.urlretrieve(url)[0]
 
 
 LANGS = {'en': 'en', 'ru': 'ru'}
