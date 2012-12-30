@@ -19,6 +19,7 @@ class Image(Document):
     lang = StringField()
     collection_id = ObjectIdField()
     type = StringField()
+    length = IntField()
 
 
 class Comment(Document):

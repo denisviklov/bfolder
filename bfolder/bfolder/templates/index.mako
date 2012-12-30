@@ -31,6 +31,7 @@
         <script src="/static/js/main.js"></script>
         <script src="/static/js/common.js"></script>
         <script src="/static/js/jquery-ui-1.8.18.custom.min.js"></script>
+        <script type="text/javascript" src="/static/js/jquery.validate.js"></script>
         <!-- The stylesheets -->
         <link rel="stylesheet" href="/static/css/smoothness/jquery-ui-1.8.18.custom.css">
         <link rel="stylesheet" href="/static/css/jquery.fileupload-ui.css">
@@ -116,6 +117,14 @@
             										curpage_attr=curpage_attr,
             										dotdot_attr=dotdot_attr)}
             		<div id="content_table">
+            		   %if is_collection:
+                           <div style="margin-top: 10px;">
+                               <a href="${back}" style="font-size: 18px;">${_(u"<< назад")}</a><br/>
+                               <h2> 
+                                   <span>Пак "${collection_ref.title}" картинок ${collection_ref.length}</span>
+                               </h2>
+                           </div>
+                        %endif
                 	<center>
 	                	<table style="margin-top: 10px;">
 							${makerow(pager.items[:5])}
@@ -271,19 +280,19 @@
                 <div class="control-group">
                     <label class="control-label" for="inputURL">URL (beta-версия возможна только загрузка с 2-ch.so)</label>
                     <div class="controls">
-                        <input type="text" id="inputURL" name="thread_url" placeholder="URL">
+                        <input type="text" id="inputURL" name="thread_url" placeholder="URL" class="required url">
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="inputURL">${_(u'Название пака (например: петушки)')}</label>
+                    <label class="control-label" for="collection_name">${_(u'Название пака (например: петушки)')}</label>
                     <div class="controls">
-                        <input type="text" id="inputURL" name="collection_name" placeholder="${_(u'Название пака')}">
+                        <input type="text" id="collection_name" class="required" minlength="2" name="collection_name" placeholder="${_(u'Название пака')}">
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">${_(u'Закрыть')}</button>
-                <input type="submit" class="btn btn-primary" value="${_(u'Начать загрузку')}">
+                <input type="submit" id="send_form" class="btn btn-primary" value="${_(u'Начать загрузку')}">
             </div>
         </form>
     </div>
@@ -297,9 +306,10 @@
     %for img in row:
         %if img.type == 'collection':
             <td align="center" style="vertical-align: bottom;">
-                <a href="/collection/${img.id.__str__()}">
+                <a href="/collections/${img.id.__str__()}">
+                <img src="/static/img/pack/${img.name}.jpg" title="${img.title}" alt="${img.title}">
                 <input type="hidden" name="locale" value="${img.lang}">
-                <center>Пак: ${img.name}</center></a>
+                <center>Пак "${img.title}" картинок ${img.length}</center></a>
             </td>        
         %else:   
     		<td align="center" style="vertical-align: bottom;">

@@ -46,6 +46,8 @@ def main(global_config, **settings):
     config.add_route('admin_login', '/godmode')
     config.add_view('bfolder.views.admin_logout', route_name='admin_logout')
     config.add_route('admin_logout', '/logout')
+    config.add_route('collection_view', '/collections/{collection_id}')
+    config.add_view('bfolder.views.collection_view', route_name='collection_view', renderer='bfolder:templates/index.mako')
     config.add_static_view('static', 'bfolder:static', cache_max_age=3600)
     config.add_subscriber(set_accepted_languages_locale, NewRequest)
     config.add_subscriber(add_localizer, NewRequest)

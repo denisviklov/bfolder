@@ -11,6 +11,7 @@ from pyramid.security import remember, forget, authenticated_userid
 from webhelpers import paginate
 from webhelpers.containers import unique
 from mongoengine import Q
+from mongoengine.base import ObjectId
 
 from model import Image, Comment, CursorWrapper
 from common import (remove_tags, name_file, img_con,
@@ -30,7 +31,7 @@ def index(request):
     p = request.params.get('page', 1)
     page = paginate.Page(CursorWrapper(cursor), items_per_page=20, page=p,
                          url=paginate.PageURL_WebOb(request))
-    return {'pager': page, 'locale': request._LOCALE_, 'is_admin': is_admin}
+    return {'pager': page, 'locale': request._LOCALE_, 'is_admin': is_admin, 'is_collection': False}
 
 
 #TODO: rework this view cause where we dont have
@@ -145,7 +146,7 @@ def get_by_tag(request):
     p = request.params.get('page', 1)
     page = paginate.Page(CursorWrapper(cursor), items_per_page=20, page=p,
                          url=paginate.PageURL_WebOb(request))
-    return {'pager': page}
+    return {'pager': page, 'is_collection': False}
 
 
 def table_ajax(request):
@@ -175,5 +176,23 @@ def admin_login(request):
 
 def admin_logout(request):
     return HTTPFound(location='/', headers=forget(request))
+
+
+def collection_view(request):
+    try:
+        collection_id = ObjectId(request.matchdict.get('collection_id', False))
+    except TypeError:
+        return HTTPNotFound()
+    is_admin = bool(authenticated_userid(request))
+    cursor = Image.objects(collection_id=collection_id)
+    cursor_length = len(cursor)
+    p = request.params.get('page', 1)
+    page = paginate.Page(CursorWrapper(cursor), items_per_page=20, page=p,
+                         url=paginate.PageURL_WebOb(request))
+    collection_ref = Image.objects(pk=collection_id).first()
+    return {'pager': page, 'locale': request._LOCALE_, 'is_admin': is_admin,
+            'is_collection': True, 'collection_ref': collection_ref,
+            'back': back_url(request)}
+
 
 
