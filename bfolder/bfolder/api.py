@@ -1,6 +1,5 @@
 #coding: utf-8
 
-import json
 import time
 
 from pyramid.httpexceptions import HTTPForbidden, HTTPOk, HTTPNotFound, HTTPBadRequest

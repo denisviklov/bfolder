@@ -30,7 +30,6 @@
         <!-- The main application script -->
         <script src="/static/js/main.js"></script>
         <script src="/static/js/common.js"></script>
-        <script src="/static/js/bootstrap-modal.js"></script>
         <script src="/static/js/jquery-ui-1.8.18.custom.min.js"></script>
         <!-- The stylesheets -->
         <link rel="stylesheet" href="/static/css/smoothness/jquery-ui-1.8.18.custom.css">
@@ -267,20 +266,26 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="myModalLabel">${_(u'Загрузить из треда')}</h3>
         </div>
-        <div class="modal-body">
-            <form id="from-thread-download">
+        <form id="from-thread-download">
+            <div class="modal-body">
                 <div class="control-group">
-                    <label class="control-label" for="inputURL">URL</label>
+                    <label class="control-label" for="inputURL">URL (beta-версия возможна только загрузка с 2-ch.so)</label>
                     <div class="controls">
-                        <input type="text" id="inputURL" placeholder="URL">
+                        <input type="text" id="inputURL" name="thread_url" placeholder="URL">
                     </div>
                 </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-            <button class="btn btn-primary">Save changes</button>
-        </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputURL">${_(u'Название пака (например: петушки)')}</label>
+                    <div class="controls">
+                        <input type="text" id="inputURL" name="collection_name" placeholder="${_(u'Название пака')}">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">${_(u'Закрыть')}</button>
+                <input type="submit" class="btn btn-primary" value="${_(u'Начать загрузку')}">
+            </div>
+        </form>
     </div>
     <!-- End of modal-->
 

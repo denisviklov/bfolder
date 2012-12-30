@@ -5,6 +5,19 @@ $(function(){
 		minLength: 2,
 		select: function(event, ui){}
 	});
+	
+	$('#from-thread-download').submit(function(){
+		var form_data = $(this).serialize();
+		$.ajax({
+			url: '/collection/create',
+			contents: 'json',
+			type: 'POST',
+			data: form_data,
+			success: function(response){
+				reload_table();
+			},
+		});
+	});
 });
 
 function reload_table(){
