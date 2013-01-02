@@ -17,24 +17,12 @@ $(function(){
 				data: form_data,
 				success: function(response){
 					form.resetForm();
+					$('#myModal').modal('hide');
+					reload_table();
 				},
 			});
-			
    	   	}
 	});
-	
-	/*$('#from-thread-download').submit(function(){
-		var form_data = $(this).serialize();
-		$.ajax({
-			url: '/collection/',
-			contents: 'json',
-			type: 'POST',
-			data: form_data,
-			success: function(response){
-				console.log(response);
-			},
-		});
-	});*/
 });
 
 function reload_table(){
