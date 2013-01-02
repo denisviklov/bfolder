@@ -22,7 +22,7 @@ def index(request):
     is_admin = bool(authenticated_userid(request))
     if request.method == 'GET':
         if request._LOCALE_ == 'ru':
-            cursor = Image.objects(Q(collection_id__not__exists=True)).order_by('-ctime')
+            cursor = Image.objects((Q(collection_id__not__exists=True) & Q(is_disabled__ne=True))).order_by('-ctime')
         else:
             cursor = Image.objects(lang=request._LOCALE_).order_by('-ctime')
     else:
@@ -151,7 +151,7 @@ def get_by_tag(request):
 
 def table_ajax(request):
     if request._LOCALE_ == 'ru':
-        cursor = Image.objects().order_by('-ctime')
+        cursor = Image.objects((Q(collection_id__not__exists=True) & Q(is_disabled__ne=True))).order_by('-ctime')
     else:
         cursor = Image.objects(lang=request._LOCALE_).order_by('-ctime')
     p = request.params.get('page', 1)

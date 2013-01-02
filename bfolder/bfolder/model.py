@@ -1,5 +1,6 @@
 from mongoengine import connect
-from mongoengine import StringField, Document, IntField, ListField, ObjectIdField
+from mongoengine import (StringField, Document, IntField, ListField,
+                         ObjectIdField, BooleanField)
 
 con = connect('bfolder')
 
@@ -20,6 +21,7 @@ class Image(Document):
     collection_id = ObjectIdField()
     type = StringField()
     length = IntField()
+    is_disabled = BooleanField()
 
 
 class Comment(Document):

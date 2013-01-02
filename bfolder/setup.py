@@ -8,7 +8,7 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = ['pyramid==1.2', 'pyramid_debugtoolbar', 'mongoengine', 
 	    'pyramid_beaker', 'PIL', 'webhelpers', 'mock', 'Babel',
-	    'lingua', 'cornice']
+	    'lingua', 'cornice', 'celery']
 
 setup(name='bfolder',
       version='0.0',

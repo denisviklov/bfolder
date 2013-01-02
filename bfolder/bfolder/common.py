@@ -1,9 +1,10 @@
-import imghdr
+import urllib
 import random
 import hashlib
+
 from PIL import Image as Img
-from os.path import abspath
-import urllib
+
+PACK_PATH = '/var/www/pack/'
 
 
 def remove_tags(input_text):
@@ -29,26 +30,18 @@ def name_file():
 
 def img_con(f_object, filename):
     #TODO: path must be move to config
-    f = open(abspath('.') + '/bfolder/static/img/pack/' + filename +
-             '_full.%s' % 'jpg', 'w')
+    f = open('%s%s_full.%s' % (PACK_PATH, filename, 'jpg'), 'w')
     f.write(f_object.read())
     f.close()
     f_object.seek(0)
-    #try:
     img = Img.open(f_object)
-    #except:
-        #img = None
-        #print 'cant detect image'
     if img:
         max_x, max_y = 200, 200
         x, y = float(img.size[0]), float(img.size[1])
         if x > max_x or y > max_y:
             r = min(max_x / x, max_y / y)
             img = img.resize([int(s * r) for s in img.size], Img.ANTIALIAS)
-            #try:
-            img.save(abspath('.') + '/bfolder/static/img/pack/' + filename + '.' + 'jpg')
-            #except:
-                #print 'cant save'
+            img.save('%s%s.%s' % (PACK_PATH, filename, 'jpg'))
     return True
 
 
@@ -72,5 +65,7 @@ def back_url(request):
     back = '/'
     if request.referer is not None:
         if '?page' in request.referer:
+            back = request.referer
+        elif 'collections' in request.referer:
             back = request.referer
     return back

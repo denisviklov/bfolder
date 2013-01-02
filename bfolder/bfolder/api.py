@@ -7,8 +7,7 @@ from pyramid.security import authenticated_userid
 from cornice import Service
 
 from model import Image
-from parser import Parser
-from common import name_file, img_con
+import bfolder.tasks
 
 img_api = Service(name='image_api', path='/img/{image_hash}',
                   description="Admin api")
@@ -46,32 +45,16 @@ def delete_img(request):
 
 @collection_api.post()
 def get_thread_images(request):
-    print 'start parsing ...', request.POST.get('thread_url')
-    parser = Parser(request.POST.get('thread_url'))
     if request.POST.get('thread_url'):
         if request.POST.get('collection_name'):
-            collection = Image(title=request.POST.get('collection_name'),
+            message = {'thread_url': request.POST.get('thread_url'),
+                       'collection_name': request.POST.get('collection_name')}
+            collection = Image(title=message.get('collection_name'),
                                ctime=int(time.time()), lang='ru',
-                               type='collection')
+                               type='collection', is_disabled=True)
             collection = collection.save()
-            #ugly flag but ...
-            _iter = 0
-            for img_file_obj in parser.parse_iter_images():
-                filename = name_file()
-                try:
-                    img_con(img_file_obj, filename)
-                    i = Image(name=filename, title='', category='', raiting=0,
-                              ctime=int(time.time()), tags=[], lang='ru',
-                              collection_id=collection.id)
-                    i.save()
-                    if not _iter:
-                        collection.name = filename
-                    _iter += 1
-                except Exception, e:
-                    print e.message
-            collection.length = _iter
-            collection.save()
-            print 'Parsing done'
+            message['collection_id'] = collection.id.__str__()
+            bfolder.tasks.get_thread_images.delay(message)
             return HTTPOk()
         else:
             return HTTPBadRequest()

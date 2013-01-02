@@ -12,13 +12,10 @@ $(function(){
 			var form_data = $(form).serialize();
 			$.ajax({
 				url: '/collection/',
-				contents: 'json',
 				type: 'POST',
 				data: form_data,
 				success: function(response){
-					form.resetForm();
 					$('#myModal').modal('hide');
-					reload_table();
 				},
 			});
    	   	}
