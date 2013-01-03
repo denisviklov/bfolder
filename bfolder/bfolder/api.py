@@ -1,7 +1,9 @@
 #coding: utf-8
 
 import time
+import json
 
+from pyramid.response import Response
 from pyramid.httpexceptions import HTTPForbidden, HTTPOk, HTTPNotFound, HTTPBadRequest
 from pyramid.security import authenticated_userid
 from cornice import Service
@@ -55,6 +57,6 @@ def get_thread_images(request):
             collection = collection.save()
             message['collection_id'] = collection.id.__str__()
             bfolder.tasks.get_thread_images.delay(message)
-            return HTTPOk()
+            return Response(json.dumps({'collection_id': message['collection_id']}))
         else:
             return HTTPBadRequest()

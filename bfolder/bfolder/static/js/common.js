@@ -1,10 +1,10 @@
 $(function(){
+
 	$('.input-large').autocomplete({
 		source: '/search_autocomplete',
 		minLength: 2,
 		select: function(event, ui){}
 	});
-
 
 	$("#from-thread-download").validate({
 		submitHandler: function(form) {
@@ -16,6 +16,12 @@ $(function(){
 				data: form_data,
 				success: function(response){
 					$('#myModal').modal('hide');
+					$('#resetForm').trigger('click');
+					$('#send_form').prop('disabled', false);
+					response = jQuery.parseJSON(response);
+					collection_url_tpl = 'http://pixchan.org/collections/' + response['collection_id'];
+					$('#resultCollectionLink').text(collection_url_tpl);
+					$('#resultModal').modal();
 				},
 			});
    	   	}

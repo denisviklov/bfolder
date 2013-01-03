@@ -61,7 +61,9 @@
 				                    <i class="icon-upload icon-white"></i>
 				                    <span>${_(u"Загрузить")}</span>
 				                </button>
-				                <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">${_(u'Загрузить из треда')}</a>
+				                %if locale == 'ru':
+				                    <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">${_(u'Загрузить из треда')}</a>
+				                %endif   
 				            </div>
 				            
 				            <div class="span5">
@@ -101,7 +103,11 @@
             		<div class="ui-widget">
 	            		<form class="well form-search" method="post">
 	            			<center>
-		            			<input type="text" class="input-large search-query" name="q" style="width: 600px; height: 40px; font-size: 22px;">
+	            			    %if locale == 'ru':
+		            			   <input type="text" class="input-large search-query" name="q" style="width: 600px; height: 40px; font-size: 22px;" placeholder="Например: yoba">
+		            			%else:
+		            			   <input type="text" class="input-large search-query" name="q" style="width: 600px; height: 40px; font-size: 22px;">
+		            			%endif
 		            			<button class="btn" type="submit" style="height: 40px; width: 60px;">
 		            				<i class="icon-search"></i>
 		            			</button>
@@ -172,9 +178,9 @@
                 <td>
                 	<td class="title"><label>${_(u"Название")}*: <input style="height: 25px;" name="title[]" required></label></td>
                 </td>
-                <td style="display: none;">
+                <!--<td style="display: none;">
                 	<td class="title"><label>${_(u"Теги")}: <input style="height: 25px;" name="tags[]"></label></td>
-                </td>
+                </td>-->
 
                 {% if (file.error) { %}
                     <td class="error" colspan="2"><span class="label label-important">Error</span> {%=fileUploadErrors[file.error] || file.error%}</td>
@@ -291,10 +297,26 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">${_(u'Закрыть')}</button>
+                <button id="resetForm" class="btn" onclick="this.form.reset();">${_(u'Очистить')}</button>
                 <input type="submit" id="send_form" class="btn btn-primary" value="${_(u'Начать загрузку')}">
             </div>
         </form>
+    </div>
+    <!-- End of modal-->
+    
+    <!-- Result modal-->
+    <div id="resultModal" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Загрузка треда отправлена в очередь</h3>
+        </div>
+        <div class="modal-body">
+            <p>Загрузка треда находится в процессе обработки. Через некоторое время
+                (обычно не 30 сек.) ты сможешь
+                найти пак картинок из треда по этой ссылке<br/>
+                <h5><span id="resultCollectionLink"></span></h5>
+            </p>
+        </div>
     </div>
     <!-- End of modal-->
 

@@ -31,7 +31,8 @@ def get_thread_images(message):
         except Exception, e:
             print e.message
     collection.length = _iter
-    collection.is_disabled = False
+    if _iter:
+        collection.is_disabled = False
     collection.save()
     print 'Parsing done with ', _iter
 
