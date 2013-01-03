@@ -26,5 +26,5 @@ class Parser(object):
     def parse_iter_images(self):
         thread_images = self.html_doc.xpath("//a[@name='expandfunc']")
         for img in thread_images:
-            yield Crawler.get_file_obj('http://%s%s' % (urlparse.urlparse(self.url).netloc,
-                                                 img.attrib.get('href')))
+            yield Crawler.get_file_obj('http://%s%s' % ('2-ch.so',
+                                                        img.attrib.get('href')))
