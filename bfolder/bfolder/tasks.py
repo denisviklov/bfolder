@@ -1,4 +1,5 @@
 import time
+import urlparse
 
 import celery
 from mongoengine.base import ObjectId
@@ -13,7 +14,9 @@ celery = celery.Celery('tasks', broker='amqp://pixchan:randomjunglist84@localhos
 @celery.task(name='bfolder.tasks.get_thread_images')
 def get_thread_images(message):
     print 'start parsing ...', message.get('thread_url')
-    parser = Parser(message.get('thread_url'))
+    thread_url = urlparse.urlparse(message.get('thread_url'))
+    url = 'http://%s%s' % ('2-ch.so', thread_url.path)
+    parser = Parser(url)
     #ugly flag but ...
     _iter = 0
     collection = Image.objects(id=ObjectId(message.get('collection_id'))).first()
