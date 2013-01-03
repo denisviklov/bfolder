@@ -35,13 +35,12 @@ def img_con(f_object, filename):
     f.close()
     f_object.seek(0)
     img = Img.open(f_object)
-    if img:
-        max_x, max_y = 200, 200
-        x, y = float(img.size[0]), float(img.size[1])
-        if x > max_x or y > max_y:
-            r = min(max_x / x, max_y / y)
-            img = img.resize([int(s * r) for s in img.size], Img.ANTIALIAS)
-            img.save('%s%s.%s' % (PACK_PATH, filename, 'jpg'))
+    max_x, max_y = 200, 200
+    x, y = float(img.size[0]), float(img.size[1])
+    if x > max_x or y > max_y:
+        r = min(max_x / x, max_y / y)
+        img = img.resize([int(s * r) for s in img.size], Img.ANTIALIAS)
+    img.save('%s%s.%s' % (PACK_PATH, filename, 'jpg'))
     return True
 
 
