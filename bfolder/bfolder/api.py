@@ -2,6 +2,7 @@
 
 import time
 import json
+import base64
 
 from pyramid.response import Response
 from pyramid.httpexceptions import HTTPForbidden, HTTPOk, HTTPNotFound, HTTPBadRequest
@@ -9,12 +10,12 @@ from pyramid.security import authenticated_userid
 from cornice import Service
 
 from model import Image
+from fileutils import FileManager
+
 import bfolder.tasks
 
 img_api = Service(name='image_api', path='/img/{image_hash}',
                   description="Admin api")
-collection_api = Service(name='collection_api', path='/collection/',
-                         description="Collection api")
 
 
 @img_api.post()
@@ -45,6 +46,10 @@ def delete_img(request):
     return HTTPForbidden()
 
 
+collection_api = Service(name='collection_api', path='/collection/',
+                         description="Iamges collections api")
+
+
 @collection_api.post()
 def get_thread_images(request):
     if request.POST.get('thread_url'):
@@ -60,3 +65,15 @@ def get_thread_images(request):
             return Response(json.dumps({'collection_id': message['collection_id']}))
         else:
             return HTTPBadRequest()
+
+
+open_api = Service(name='open_api', path='/api/image/{given_id}',
+                         description="Image api")
+
+
+@open_api.post()
+def recive_images(request):
+    img = request.POST.get('file')
+    img = base64.decodestring(img[img.find('base64') + 7:])
+    file_manager = FileManager(img, request.POST.get('filename'), []).process()
+    return HTTPOk()
